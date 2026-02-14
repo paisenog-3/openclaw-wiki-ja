@@ -1,3 +1,65 @@
+/* コードブロック背景 */
+pre {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+}
+:root.dark pre {
+  background: #f5f5f5 !important;
+  color: #1e1e1e !important;
+}
+
+/* インラインコード */
+code:not(pre code) {
+  background: #e5e7eb !important;
+  color: #1e1e1e !important;
+}
+:root.dark code:not(pre code) {
+  background: #374151 !important;
+  color: #d4d4d4 !important;
+}
+
+/* タブのスタイル */
+[role="tablist"] {
+  border-bottom: 2px solid #e5e7eb !important;
+  margin-bottom: 1rem;
+}
+[role="tab"] {
+  padding: 8px 16px !important;
+  border: 1px solid transparent !important;
+  border-bottom: none !important;
+  border-radius: 6px 6px 0 0 !important;
+  margin-bottom: -2px;
+}
+[role="tab"][aria-selected="true"] {
+  background: #eff6ff !important;
+  border-color: #e5e7eb !important;
+  border-bottom: 2px solid #eff6ff !important;
+  color: #2563eb !important;
+  font-weight: 600;
+}
+:root.dark [role="tablist"] {
+  border-bottom-color: #374151 !important;
+}
+:root.dark [role="tab"][aria-selected="true"] {
+  background: #1e293b !important;
+  border-color: #374151 !important;
+  border-bottom-color: #1e293b !important;
+  color: #60a5fa !important;
+}
+[role="tabpanel"] {
+  border: 1px solid #e5e7eb !important;
+  border-top: none !important;
+  border-radius: 0 0 6px 6px !important;
+  padding: 1.5rem !important;
+}
+:root.dark [role="tabpanel"] {
+  border-color: #374151 !important;
+}
+
 /* テーブル枠線 */
 table {
   border-collapse: collapse;
@@ -10,6 +72,12 @@ th, td {
 }
 table {
   width: 100% !important;
+  display: block;
+  overflow-x: auto;
+}
+th, td {
+  padding: 8px 12px !important;
+  white-space: nowrap;
 }
 
 /* マーカー（callout内の強調） */
