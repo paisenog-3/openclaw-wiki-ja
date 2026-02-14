@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         ## 記事の投稿ありがとうございます！🌸
-        以下のフォームに記入してください。管理者が確認後、Wikiに掲載します。
+        以下のフォームに記入してください。投稿後、自動でWikiに掲載されます。
 
   - type: input
     id: title
@@ -30,6 +30,24 @@ body:
         - その他
     validations:
       required: true
+
+  - type: input
+    id: author_name
+    attributes:
+      label: 投稿者名（任意）
+      description: "空欄の場合は「匿名」と表示されます"
+      placeholder: "例: たろう"
+    validations:
+      required: false
+
+  - type: input
+    id: author_link
+    attributes:
+      label: SNS / Webサイト（任意）
+      description: "X、GitHub、ブログなどのURL。記事に投稿者リンクとして表示されます"
+      placeholder: "例: https://x.com/your_account"
+    validations:
+      required: false
 
   - type: textarea
     id: content

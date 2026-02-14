@@ -30,6 +30,8 @@ jobs:
             
             const title = getField('記事タイトル');
             const category = getField('カテゴリ');
+            const authorName = getField('投稿者名（任意）');
+            const authorLink = getField('SNS / Webサイト（任意）');
             const content = getField('記事の内容');
             const notes = getField('補足・メモ（任意）');
             
@@ -44,13 +46,22 @@ jobs:
             const dir = categoryMap[category] || 'wiki-notes';
             const slug = `community-${context.payload.issue.number}`;
             
+            // Determine display name
+            const noResponse = '_No response_';
+            const displayName = (authorName && authorName !== noResponse) 
+              ? authorName 
+              : '匿名';
+            const link = (authorLink && authorLink !== noResponse) ? authorLink : '';
+            
             core.setOutput('title', title);
             core.setOutput('content', content);
             core.setOutput('notes', notes);
             core.setOutput('dir', dir);
             core.setOutput('slug', slug);
             core.setOutput('issue_number', context.payload.issue.number);
-            core.setOutput('author', context.payload.issue.user.login);
+            core.setOutput('github_user', context.payload.issue.user.login);
+            core.setOutput('display_name', displayName);
+            core.setOutput('author_link', link);
 
       - name: Create article file
         run: |
@@ -58,29 +69,48 @@ jobs:
           FILE="${DIR}/${{ steps.parse.outputs.slug }}.md"
           mkdir -p "$DIR"
           
+          DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          
           {
             echo "---"
             echo "title: \"$TITLE\""
-            echo "date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            echo "author: $AUTHOR"
+            echo "date: $DATE"
             echo "source_issue: $ISSUE_NUM"
+            echo "community: true"
+            echo "author_name: \"$DISPLAY_NAME\""
+            echo "author_link: \"$AUTHOR_LINK\""
+            echo "github_user: \"$GITHUB_USER\""
             echo "---"
             echo ""
             echo "$CONTENT"
           } > "$FILE"
           
+          # Add notes if present
           if [ -n "$NOTES" ] && [ "$NOTES" != "_No response_" ]; then
             echo "" >> "$FILE"
             echo "---" >> "$FILE"
             echo "" >> "$FILE"
             echo "> 投稿者メモ: $NOTES" >> "$FILE"
           fi
+          
+          # Add contributor footer
+          echo "" >> "$FILE"
+          echo "---" >> "$FILE"
+          echo "" >> "$FILE"
+          if [ -n "$AUTHOR_LINK" ]; then
+            echo "> 📝 この記事は [$DISPLAY_NAME]($AUTHOR_LINK) さんによるコミュニティ投稿です（$DATE_DISPLAY）" >> "$FILE"
+          else
+            echo "> 📝 この記事は $DISPLAY_NAME さんによるコミュニティ投稿です（$DATE_DISPLAY）" >> "$FILE"
+          fi
         env:
           TITLE: ${{ steps.parse.outputs.title }}
           CONTENT: ${{ steps.parse.outputs.content }}
           NOTES: ${{ steps.parse.outputs.notes }}
-          AUTHOR: ${{ steps.parse.outputs.author }}
+          DISPLAY_NAME: ${{ steps.parse.outputs.display_name }}
+          AUTHOR_LINK: ${{ steps.parse.outputs.author_link }}
+          GITHUB_USER: ${{ steps.parse.outputs.github_user }}
           ISSUE_NUM: ${{ steps.parse.outputs.issue_number }}
+          DATE_DISPLAY: $(date +%Y年%m月%d日)
 
       - name: Commit and push
         run: |
