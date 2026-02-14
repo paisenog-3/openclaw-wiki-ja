@@ -9,11 +9,26 @@ toc: false
   <img src="https://yozora4416.github.io/openclaw-wiki-ja/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
 </div>
 
+## はじめに
+
 {{< cards cols="2" >}}
-  {{< card link="/releases" title="📋 リリースノート" subtitle="v2026.2.13 - Discordボイスメッセージとプレゼンス設定" >}}
   {{< card link="/wiki-notes" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
-  {{< card link="/setup" title="🚀 初期設定ガイド" subtitle="インストール、初期設定、Clawdbotからの移行" >}}
-  {{< card link="/contribute" title="📜 利用規約" subtitle="このWikiへの貢献方法とガイドライン" >}}
+  {{< card link="/releases" title="📋 リリースノート" subtitle="最新版の変更履歴と新機能" >}}
+{{< /cards >}}
+
+## セットアップ
+
+{{< cards cols="2" >}}
+  {{< card link="/setup/getting-started" title="🚀 インストールと初期設定" subtitle="OpenClawを始める最初のステップ" >}}
+  {{< card link="/setup/migration-from-clawdbot" title="🔄 Clawdbotからの移行" subtitle="既存のClawdbotユーザー向けガイド" >}}
+  {{< card link="/setup/webchat-settings" title="⚙️ WebChat設定リファレンス" subtitle="WebChat機能の詳細設定" >}}
+  {{< card link="/wiki-notes/webchat-ja" title="🇯🇵 WebChat日本語化パッチ" subtitle="WebChatインターフェースを日本語化" >}}
+{{< /cards >}}
+
+## その他
+
+{{< cards cols="2" >}}
+  {{< card link="/contribute" title="📜 利用規約・貢献ガイド" subtitle="このWikiへの貢献方法とガイドライン" >}}
 {{< /cards >}}
 
 ---
