@@ -1,7 +1,7 @@
 baseURL = 'https://yozora4416.github.io/openclaw-wiki-ja/'
 languageCode = 'ja-JP'
 title = 'OpenClaw 日本語Wiki'
-copyright = 'Maintained by [パイセン｜AIと暮らす](https://x.com/OG3_gata)'
+copyright = 'Maintained by <a href="https://x.com/OG3_gata" target="_blank">パイセン｜AIと暮らす</a>'
 
 # Hextra テーマ設定（Hugo Module方式）
 [module]
@@ -19,10 +19,6 @@ defaultContentLanguage = 'ja'
 
 # メニュー設定
 [menu]
-  [[menu.main]]
-    name = "ドキュメント"
-    pageRef = "/docs"
-    weight = 1
   [[menu.main]]
     name = "GitHub"
     url = "https://github.com/yozora4416/openclaw-wiki-ja"

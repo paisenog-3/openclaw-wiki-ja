@@ -1,5 +1,5 @@
 ---
-title: "貢献ガイドと利用規約"
+title: "利用規約"
 weight: 30
 description: "OpenClaw日本語Wikiの利用規約、貢献方法、行動規範"
 tags: ["貢献", "コミュニティ", "執筆ガイド", "利用規約"]
