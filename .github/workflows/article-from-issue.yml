@@ -28,11 +28,12 @@ jobs:
               return match ? match[1].trim() : '';
             };
             
-            const title = getField('記事タイトル');
+            // タイトルはIssueタイトルから取得（[ノート投稿] プレフィックスを除去）
+            const title = context.payload.issue.title.replace(/^\[ノート投稿\]\s*/, '').trim();
             const category = getField('カテゴリ');
-            const authorName = getField('投稿者名（任意）');
-            const authorLink = getField('SNS / Webサイト（任意）');
-            const content = getField('記事の内容');
+            const authorName = getField('投稿者名（任意 — 空欄の場合は「匿名」と表示されます）');
+            const authorLink = getField('SNS / Webサイト（任意 — ノートに投稿者リンクとして表示されます）');
+            const content = getField('ノートの内容');
             const notes = getField('補足・メモ（任意）');
             
             const categoryMap = {
