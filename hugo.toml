@@ -20,6 +20,12 @@ defaultContentLanguage = 'ja'
 # メニュー設定
 [menu]
   [[menu.main]]
+    name = "📝 投稿する"
+    url = "https://github.com/paisenog-3/openclaw-wiki-ja/issues/new?template=article-submission.yml"
+    weight = 1
+    [menu.main.params]
+      newWindow = true
+  [[menu.main]]
     name = "GitHub"
     url = "https://github.com/paisenog-3/openclaw-wiki-ja"
     weight = 2
