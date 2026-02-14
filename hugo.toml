@@ -1,0 +1,77 @@
+baseURL = 'https://YOUR-USERNAME.github.io/openclaw-wiki-ja/'
+languageCode = 'ja-JP'
+title = 'OpenClaw 日本語活用Wiki'
+theme = 'hugo-book'
+
+# Hugo Book テーマ設定
+[params]
+  # 検索機能有効化
+  BookSearch = true
+  # リポジトリURL（編集リンク表示用）
+  BookRepo = 'https://github.com/YOUR-USERNAME/openclaw-wiki-ja'
+  # 編集リンク有効化
+  BookEditPath = 'edit/main/content'
+  # 目次表示
+  BookToC = true
+  # ダークモード
+  BookTheme = 'auto'  # light, dark, auto
+  # セクション表示
+  BookSection = '*'
+  # メニュー折りたたみ
+  BookMenuBundle = '/menu'
+  # Favicon
+  BookLogo = '/images/logo.png'
+  # コメント欄無効化
+  BookComments = false
+  # ページナビゲーション
+  BookPageNavigation = true
+  # パンくずリスト
+  BookBreadcrumb = true
+
+# メニュー設定
+[menu]
+  [[menu.before]]
+    name = "GitHub"
+    url = "https://github.com/YOUR-USERNAME/openclaw-wiki-ja"
+    weight = 10
+
+# マークアップ設定
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # HTML埋め込み許可
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+    lineNumbersInTable = true
+    codeFences = true
+    guessSyntax = true
+    noClasses = false
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# 言語設定
+[languages]
+  [languages.ja]
+    languageName = '日本語'
+    weight = 1
+    [languages.ja.params]
+      description = 'OpenClawの日本語活用Wiki - コミュニティで育てる実践ガイド'
+
+# 出力形式
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']  # JSON for search index
+
+# セキュリティ設定
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE)$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
