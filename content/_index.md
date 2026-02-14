@@ -18,6 +18,13 @@ breadcrumbs: false
   <img src="/openclaw-wiki-ja/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
 </div>
 
+<div class="hx:text-center" style="max-width: 600px; margin: 0 auto; line-height: 1.8;">
+  <p>OpenClawの日本語非公式コミュニティWikiです。<br>
+  導入・初期設定から日々の活用Tipsまで、<br>
+  ユーザー同士がノウハウを持ち寄り、OpenClawをもっと便利にしていく場です。</p>
+  <p style="font-size: 0.9rem; color: #6b7280;">非営利・相互扶助の精神で運営されており、すべて善意の貢献で成り立っています。<br>お互いを尊重した利用をお願いします。</p>
+</div>
+
 <div class="hero-buttons">
   <a href="wiki-notes" class="hero-btn-primary">📖 Wikiノートを参照する</a>
   <a href="https://github.com/paisenog-3/openclaw-wiki-ja/issues/new?template=article-submission.yml" target="_blank" class="hero-btn-secondary">📝 Wikiノートを投稿する</a>
