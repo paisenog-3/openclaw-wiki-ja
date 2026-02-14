@@ -14,7 +14,7 @@ table {
 
 /* マーカー（callout内の強調） */
 mark {
-  background: #dbeafe !important;
+  background: #bfdbfe !important;
   color: inherit !important;
   padding: 2px 4px;
   border-radius: 3px;
