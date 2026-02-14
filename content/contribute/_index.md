@@ -101,12 +101,3 @@ breadcrumbs: false
 - **類似記事の統合**: 同じテーマの記事が複数ある場合、内容を統合することがあります（寄与割合は按分）
 - **削除**: 利用規約に違反する投稿は予告なく削除されます
 
----
-
-## お問い合わせ
-
-バグ報告・機能提案・質問は [GitHub Discussions](https://github.com/paisenog-3/openclaw-wiki-ja/discussions) にお願いします。
-
----
-
-このWikiは [パイセン｜AIと暮らす](https://x.com/OG3_gata) が運営する非公式コミュニティWikiです。
