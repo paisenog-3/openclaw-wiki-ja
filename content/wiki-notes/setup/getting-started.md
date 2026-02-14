@@ -166,18 +166,33 @@ WSL2とUbuntuが既にインストール済みの場合、この手順はスキ�
 **ウィザードで設定する項目（Manual選択時）:**
 
 1. **セキュリティ警告の確認** — セキュリティ注意事項が表示されます。内容を確認してYesで続行
+
+![セキュリティ警告画面](/images/onboard/01-security.png)
+
 2. **Onboarding mode** — QuickStart（デフォルト設定）か Manual（詳細制御）を選択
+
+![QuickStart/Manual選択画面](/images/onboard/02-mode.png)
+
 3. **セットアップ対象** — Local gateway（ローカル環境）か Remote gateway（リモート環境）を選択
 4. **Workspace directory** — ファイルを保存する場所を指定（デフォルト: `~/.openclaw/workspace`）
 5. **Model check** — モデル設定の状態を表示（認証未設定の場合は警告が表示されますが、ここでは設定しません）
+
+![モデルチェック警告画面](/images/onboard/04-gateway.png)
+
 6. **Gateway port** — ポート番号（デフォルト: 18789）
 7. **Gateway bind** — Loopback / LAN / Tailnet / Auto / Custom から選択
+
+![Gatewayバインド設定画面](/images/onboard/05-gateway-bind.png)
+
 8. **Gateway auth** — Token（推奨） / Password から選択
 9. **Tailscale exposure** — Off / Serve / Funnel から選択
 10. **Gateway token** — トークン入力（空欄にすると自動生成）
 11. **Channel status** — 各チャネルの状態一覧が表示されます
 12. **Configure chat channels now?** — チャネル設定をするか選択（スキップ可）
 13. **Select channel** — 設定するチャネルを選択（Telegram、Discord、WhatsApp等）
+
+![チャネル選択画面](/images/onboard/08-channel-select.png)
+
 14. **サービスのインストール** — WSL2の systemd ユニットをインストール
 
 {{< callout type="info" >}}
@@ -257,18 +272,33 @@ openclaw configure --section model
 **ウィザードで設定する項目（Manual選択時）:**
 
 1. **セキュリティ警告の確認** — セキュリティ注意事項が表示されます。内容を確認してYesで続行
+
+![セキュリティ警告画面](/images/onboard/01-security.png)
+
 2. **Onboarding mode** — QuickStart（デフォルト設定）か Manual（詳細制御）を選択
+
+![QuickStart/Manual選択画面](/images/onboard/02-mode.png)
+
 3. **セットアップ対象** — Local gateway（ローカル環境）か Remote gateway（リモート環境）を選択
 4. **Workspace directory** — ファイルを保存する場所を指定（デフォルト: `~/.openclaw/workspace`）
 5. **Model check** — モデル設定の状態を表示（認証未設定の場合は警告が表示されますが、ここでは設定しません）
+
+![モデルチェック警告画面](/images/onboard/04-gateway.png)
+
 6. **Gateway port** — ポート番号（デフォルト: 18789）
 7. **Gateway bind** — Loopback / LAN / Tailnet / Auto / Custom から選択
+
+![Gatewayバインド設定画面](/images/onboard/05-gateway-bind.png)
+
 8. **Gateway auth** — Token（推奨） / Password から選択
 9. **Tailscale exposure** — Off / Serve / Funnel から選択
 10. **Gateway token** — トークン入力（空欄にすると自動生成）
 11. **Channel status** — 各チャネルの状態一覧が表示されます
 12. **Configure chat channels now?** — チャネル設定をするか選択（スキップ可）
 13. **Select channel** — 設定するチャネルを選択（Telegram、Discord、WhatsApp等）
+
+![チャネル選択画面](/images/onboard/08-channel-select.png)
+
 14. **サービスのインストール** — macOS の LaunchAgent または Linux/WSL2 の systemd ユニットをインストール
 
 {{< callout type="info" >}}
