@@ -1,0 +1,15 @@
+/* ナビバー下部に境界線 */
+.hextra-nav-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+:root.dark .hextra-nav-container {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* サイドバー右側に境界線 */
+.hextra-sidebar-container {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+:root.dark .hextra-sidebar-container {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
