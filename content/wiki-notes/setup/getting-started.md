@@ -33,7 +33,7 @@ ChatGPTやClaudeなどのサブスクリプション契約がある場合、API�
 | **OpenAI** | ChatGPT Plus / Pro | サブスク枠内で利用可能 |
 | **Google** | Gemini Advanced | サブスク枠内で利用可能 |
 
-セッショントークンの取得方法は、`openclaw onboard` ウィザードの画面で案内されます。
+セッショントークンの取得方法は、`openclaw configure --section model` コマンドで案内されます。
 
 ### 🔐 APIキーで利用する場合
 
@@ -89,7 +89,7 @@ irm https://paisenog-3.github.io/openclaw-wiki-ja/scripts/install.ps1 | iex
 
 ---
 
-### 📖 インストーラーの進め方
+## 📖 インストーラーの進め方
 
 インストーラーを実行すると、以下の順番で処理が進みます。画面の指示に沿って進めてください。
 
@@ -138,9 +138,10 @@ WSL2とUbuntuが既にインストール済みの場合、この手順はスキ�
 
 ```
 🔍 Node.js を確認中...
+✅ Node.js v22.x.x が見つかりました
 ```
 
-すでにインストール済みなら自動でスキップされます。未インストールの場合は推奨バージョンが自動でインストールされるので、そのまま待ってください。
+未インストールの場合は推奨バージョンが自動でインストールされます。そのまま待ってください。
 
 #### ③ OpenClaw のインストール（自動）
 
@@ -149,92 +150,57 @@ WSL2とUbuntuが既にインストール済みの場合、この手順はスキ�
 ✅ OpenClaw 2026.x.x をインストールしました
 ```
 
-常に最新版がインストールされます。すでにインストール済みの場合は上書き確認が出る場合があります。
+常に最新版がインストールされます。
 
-#### ④ セットアップウィザード起動（`openclaw onboard`）
+#### ④ セキュリティ警告の確認
 
-インストール完了後、対話式のセットアップウィザードが起動します。画面の指示に従って、以下の項目を順に設定していきます：
-
-{{< callout type="info" >}}
-**初めての方は QuickStart（デフォルト設定）がおすすめです。** QuickStartでは多くの設定がデフォルト値で自動設定され、すぐに使い始められます。
-{{< /callout >}}
-
-{{< callout type="warning" >}}
-**認証設定はウィザード完了後に行います。** ウィザード内では認証の設定画面は表示されません。完了後に別途設定します（次のステップ⑤で説明）。
-{{< /callout >}}
-
-**ウィザードで設定する項目（Manual選択時）:**
-
-1. **セキュリティ警告の確認** — セキュリティ注意事項が表示されます。内容を確認してYesで続行
+セキュリティ注意事項が表示されます。内容を確認して「Yes」を選択してください。
 
 ![セキュリティ警告画面](/images/onboard/01-security.png)
 
-2. **Onboarding mode** — QuickStart（デフォルト設定）か Manual（詳細制御）を選択
+#### ⑤ フロー選択
+
+**QuickStart**（デフォルト設定・推奨）または **Manual**（詳細設定）を選択します。
 
 ![QuickStart/Manual選択画面](/images/onboard/02-mode.png)
 
-3. **セットアップ対象** — Local gateway（ローカル環境）か Remote gateway（リモート環境）を選択
-4. **Workspace directory** — ファイルを保存する場所を指定（デフォルト: `~/.openclaw/workspace`）
-5. **Model check** — モデル設定の状態を表示（認証未設定の場合は警告が表示されますが、ここでは設定しません）
+{{< callout type="info" >}}
+**初めての方はQuickStartがおすすめです。** 必要な設定がデフォルト値で自動的に適用され、すぐに使い始められます。
+{{< /callout >}}
 
-![モデルチェック警告画面](/images/onboard/04-gateway.png)
+#### ⑥ チャネル選択
 
-6. **Gateway port** — ポート番号（デフォルト: 18789）
-7. **Gateway bind** — Loopback / LAN / Tailnet / Auto / Custom から選択
-
-![Gatewayバインド設定画面](/images/onboard/05-gateway-bind.png)
-
-8. **Gateway auth** — Token（推奨） / Password から選択
-9. **Tailscale exposure** — Off / Serve / Funnel から選択
-10. **Gateway token** — トークン入力（空欄にすると自動生成）
-11. **Channel status** — 各チャネルの状態一覧が表示されます
-12. **Configure chat channels now?** — チャネル設定をするか選択（スキップ可）
-13. **Select channel** — 設定するチャネルを選択（Telegram、Discord、WhatsApp等）
+メッセージングアプリ（Telegram、Discord、WhatsApp等）との連携を設定できます。  
+後から設定することもできるので、**「Skip for now」** を選んでも問題ありません。
 
 ![チャネル選択画面](/images/onboard/08-channel-select.png)
 
-14. **サービスのインストール** — WSL2の systemd ユニットをインストール
+#### ⑦ 認証設定（セットアップ完了後に実施）
 
 {{< callout type="info" >}}
-**QuickStartを選択した場合:**
-セキュリティ警告→QuickStart選択→(既存設定があれば確認)→チャネル選択→完了、のように簡略化されたフローで進みます。以下のデフォルト設定が自動で適用されます:
-- ローカルGateway（loopback接続）
-- ポート 18789
-- Gateway認証: Token（自動生成）
-- Tailscale: Off
+**QuickStartではデフォルトモデル（anthropic/claude-sonnet-4-5）が自動設定されます。** 認証が未設定の場合、ブラウザでWebChatを開くとControl UIから設定できます。
 {{< /callout >}}
 
-#### ⑤ 認証設定（ウィザード完了後に別途実施）
-
-{{< callout type="warning" >}}
-**重要:** onboardウィザード内では認証設定（APIキー/セッショントークン）は行いません。ウィザード完了後に以下のいずれかの方法で設定してください。
-{{< /callout >}}
-
-**方法1: コマンドラインから設定**
+ウィザード完了後、以下のコマンドで認証を設定してください：
 
 ```bash
 openclaw configure --section model
 ```
 
-対話式で以下を設定できます:
-- APIキーまたはセッショントークンの入力
-- デフォルトモデルの選択
-- プロバイダーの選択（Anthropic、OpenAI、Google、Groq等）
+対話式でAPIキーまたはセッショントークンを設定できます。
 
-**方法2: WebChat画面から設定**
+**または** ブラウザでWebChatを開き、右上の⚙️（設定）→ Control UI から設定することもできます。
 
-1. ブラウザでGatewayのURL（`http://localhost:18789`）を開く
-2. 右上の ⚙️（設定）→ Control UI を開く
-3. Model Configuration セクションでAPIキーやモデルを設定
+#### ⑧ セットアップ完了
 
-{{< callout type="info" >}}
-ローカルモデル（Ollama、LM Studio等）を使用する場合も、この段階で設定します。
-{{< /callout >}}
+Gateway が自動起動し、ブラウザで WebChat にアクセスできるようになります🎉
 
-#### ⑥ セットアップ完了
+```
+✅ OpenClaw Gateway が起動しました
+🌐 http://localhost:18789
+```
 
-認証設定が完了すると、すべての準備が整いました🎉  
-ブラウザで表示されているURLから、すぐにOpenClawを使い始められます。
+ブラウザでURLを開いて、すぐに使い始められます。
 
 {{< /tab >}}
 
@@ -244,9 +210,10 @@ openclaw configure --section model
 
 ```
 🔍 Node.js を確認中...
+✅ Node.js v22.x.x が見つかりました
 ```
 
-すでにインストール済みなら自動でスキップされます。未インストールの場合は推奨バージョンが自動でインストールされるので、そのまま待ってください。
+未インストールの場合は推奨バージョンが自動でインストールされます。そのまま待ってください。
 
 #### ② OpenClaw のインストール（自動）
 
@@ -255,92 +222,57 @@ openclaw configure --section model
 ✅ OpenClaw 2026.x.x をインストールしました
 ```
 
-常に最新版がインストールされます。すでにインストール済みの場合は上書き確認が出る場合があります。
+常に最新版がインストールされます。
 
-#### ③ セットアップウィザード起動（`openclaw onboard`）
+#### ③ セキュリティ警告の確認
 
-インストール完了後、対話式のセットアップウィザードが起動します。画面の指示に従って、以下の項目を順に設定していきます：
-
-{{< callout type="info" >}}
-**初めての方は QuickStart（デフォルト設定）がおすすめです。** QuickStartでは多くの設定がデフォルト値で自動設定され、すぐに使い始められます。
-{{< /callout >}}
-
-{{< callout type="warning" >}}
-**認証設定はウィザード完了後に行います。** ウィザード内では認証の設定画面は表示されません。完了後に別途設定します（次のステップ④で説明）。
-{{< /callout >}}
-
-**ウィザードで設定する項目（Manual選択時）:**
-
-1. **セキュリティ警告の確認** — セキュリティ注意事項が表示されます。内容を確認してYesで続行
+セキュリティ注意事項が表示されます。内容を確認して「Yes」を選択してください。
 
 ![セキュリティ警告画面](/images/onboard/01-security.png)
 
-2. **Onboarding mode** — QuickStart（デフォルト設定）か Manual（詳細制御）を選択
+#### ④ フロー選択
+
+**QuickStart**（デフォルト設定・推奨）または **Manual**（詳細設定）を選択します。
 
 ![QuickStart/Manual選択画面](/images/onboard/02-mode.png)
 
-3. **セットアップ対象** — Local gateway（ローカル環境）か Remote gateway（リモート環境）を選択
-4. **Workspace directory** — ファイルを保存する場所を指定（デフォルト: `~/.openclaw/workspace`）
-5. **Model check** — モデル設定の状態を表示（認証未設定の場合は警告が表示されますが、ここでは設定しません）
+{{< callout type="info" >}}
+**初めての方はQuickStartがおすすめです。** 必要な設定がデフォルト値で自動的に適用され、すぐに使い始められます。
+{{< /callout >}}
 
-![モデルチェック警告画面](/images/onboard/04-gateway.png)
+#### ⑤ チャネル選択
 
-6. **Gateway port** — ポート番号（デフォルト: 18789）
-7. **Gateway bind** — Loopback / LAN / Tailnet / Auto / Custom から選択
-
-![Gatewayバインド設定画面](/images/onboard/05-gateway-bind.png)
-
-8. **Gateway auth** — Token（推奨） / Password から選択
-9. **Tailscale exposure** — Off / Serve / Funnel から選択
-10. **Gateway token** — トークン入力（空欄にすると自動生成）
-11. **Channel status** — 各チャネルの状態一覧が表示されます
-12. **Configure chat channels now?** — チャネル設定をするか選択（スキップ可）
-13. **Select channel** — 設定するチャネルを選択（Telegram、Discord、WhatsApp等）
+メッセージングアプリ（Telegram、Discord、WhatsApp等）との連携を設定できます。  
+後から設定することもできるので、**「Skip for now」** を選んでも問題ありません。
 
 ![チャネル選択画面](/images/onboard/08-channel-select.png)
 
-14. **サービスのインストール** — macOS の LaunchAgent または Linux/WSL2 の systemd ユニットをインストール
+#### ⑥ 認証設定（セットアップ完了後に実施）
 
 {{< callout type="info" >}}
-**QuickStartを選択した場合:**
-セキュリティ警告→QuickStart選択→(既存設定があれば確認)→チャネル選択→完了、のように簡略化されたフローで進みます。以下のデフォルト設定が自動で適用されます:
-- ローカルGateway（loopback接続）
-- ポート 18789
-- Gateway認証: Token（自動生成）
-- Tailscale: Off
+**QuickStartではデフォルトモデル（anthropic/claude-sonnet-4-5）が自動設定されます。** 認証が未設定の場合、ブラウザでWebChatを開くとControl UIから設定できます。
 {{< /callout >}}
 
-#### ④ 認証設定（ウィザード完了後に別途実施）
-
-{{< callout type="warning" >}}
-**重要:** onboardウィザード内では認証設定（APIキー/セッショントークン）は行いません。ウィザード完了後に以下のいずれかの方法で設定してください。
-{{< /callout >}}
-
-**方法1: コマンドラインから設定**
+ウィザード完了後、以下のコマンドで認証を設定してください：
 
 ```bash
 openclaw configure --section model
 ```
 
-対話式で以下を設定できます:
-- APIキーまたはセッショントークンの入力
-- デフォルトモデルの選択
-- プロバイダーの選択（Anthropic、OpenAI、Google、Groq等）
+対話式でAPIキーまたはセッショントークンを設定できます。
 
-**方法2: WebChat画面から設定**
+**または** ブラウザでWebChatを開き、右上の⚙️（設定）→ Control UI から設定することもできます。
 
-1. ブラウザでGatewayのURL（`http://localhost:18789`）を開く
-2. 右上の ⚙️（設定）→ Control UI を開く
-3. Model Configuration セクションでAPIキーやモデルを設定
+#### ⑦ セットアップ完了
 
-{{< callout type="info" >}}
-ローカルモデル（Ollama、LM Studio等）を使用する場合も、この段階で設定します。
-{{< /callout >}}
+Gateway が自動起動し、ブラウザで WebChat にアクセスできるようになります🎉
 
-#### ⑤ セットアップ完了
+```
+✅ OpenClaw Gateway が起動しました
+🌐 http://localhost:18789
+```
 
-認証設定が完了すると、すべての準備が整いました🎉  
-ブラウザで表示されているURLから、すぐにOpenClawを使い始められます。
+ブラウザでURLを開いて、すぐに使い始められます。
 
 {{< /tab >}}
 
@@ -353,10 +285,10 @@ openclaw configure --section model
 セットアップお疲れさまでした！次は以下の順番で進めましょう：
 
 {{< cards >}}
-  {{< card link="../setup/security" title="🔒 セキュリティ初期設定" subtitle="まず最初にセキュリティを確認" >}}
+  {{< card link="./security" title="🔒 セキュリティ初期設定" subtitle="まず最初にセキュリティを確認" >}}
   {{< card link="../usage/basics" title="💬 基本的な使い方" subtitle="WebChatでの対話を始める" >}}
-  {{< card link="../webchat-ja" title="🇯🇵 WebChat日本語化" subtitle="UIを日本語化する" >}}
-  {{< card link="../setup/webchat-settings" title="⚙️ WebChat設定" subtitle="詳細なカスタマイズ" >}}
+  {{< card link="./webchat-ja" title="🇯🇵 WebChat日本語化" subtitle="UIを日本語化する" >}}
+  {{< card link="./webchat-settings" title="⚙️ WebChat設定" subtitle="詳細なカスタマイズ" >}}
 {{< /cards >}}
 
 ---
