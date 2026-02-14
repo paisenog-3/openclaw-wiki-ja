@@ -36,12 +36,14 @@ breadcrumbs: false
 
 投稿内容は定期的にセキュリティチェックされています。悪質な違反者はアクセス制限の対象となります。
 
-### ライセンス
+### ライセンス（記事やコードの再利用について）
 
-| 対象 | ライセンス |
-|------|-----------|
-| 記事 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.ja) — 自由に利用・改変可。クレジット表示と同一ライセンス継承が条件 |
-| コード例 | [MIT License](https://opensource.org/licenses/MIT) — 自由に利用可 |
+このWikiの記事やコード例は、以下のルールで自由に再利用できます。
+
+| 対象 | ルール | 具体的には |
+|------|--------|----------|
+| 記事 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.ja) | コピー・改変OK。ただし「出典: OpenClaw日本語Wiki」と記載し、同じライセンスで公開すること |
+| コード例 | [MIT License](https://opensource.org/licenses/MIT) | コピペして自分のプロジェクトに自由に使えます。制限なし |
 
 ### 免責事項
 
