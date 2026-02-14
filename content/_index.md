@@ -13,8 +13,8 @@ type: docs
 ## はじめに
 
 {{< cards cols="2" >}}
-  {{< card link="/wiki-notes" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
-  {{< card link="/releases" title="📋 リリースノート" subtitle="最新版の変更履歴と新機能" >}}
+  {{< card link="/wiki-notes/webchat-ja" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
+  {{< card link="/releases/2026-2-13" title="📋 リリースノート" subtitle="最新版 v2026.2.13 の変更履歴と新機能" >}}
 {{< /cards >}}
 
 ## セットアップ
