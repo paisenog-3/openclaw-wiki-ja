@@ -27,6 +27,12 @@ toc: false
   {{< card link="/customize/webchat-ja" title="WebChat日本語化パッチ" subtitle="WebChat UIを日本語化する方法" >}}
 {{< /cards >}}
 
+### リリースノート
+
+{{< cards >}}
+  {{< card link="/releases/2026-2-12" title="v2026.2.12" subtitle="セキュリティ強化、plugins uninstall、Telegram blockquote対応など" >}}
+{{< /cards >}}
+
 ### Wikiについて
 
 {{< cards >}}
