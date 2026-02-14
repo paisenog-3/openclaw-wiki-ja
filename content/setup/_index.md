@@ -1,16 +1,14 @@
 ---
-title: "セットアップ"
+title: "初期設定ガイド"
 weight: 20
 cascade:
   type: docs
 ---
 
-# セットアップ
+OpenClawのインストールから初期設定、移行までの手順をまとめています。
 
-OpenClawのインストールから初期設定まで、セットアップに関する記事をまとめています。
-
-## 記事一覧
-
-- [OpenClawセットアップガイド](/setup/getting-started) - 基本的なインストール〜起動まで
-- [Clawdbotからの移行](/setup/migration-from-clawdbot) - ClawdbotからOpenClawへの移行手順とトラブルシューティング
-- [WebChat設定ガイド](/setup/webchat-settings) - WebChatダッシュボードの設定項目解説
+{{< cards >}}
+  {{< card link="/setup/getting-started" title="インストールと初期設定" subtitle="OpenClawのインストールから起動までの手順" >}}
+  {{< card link="/setup/migration-from-clawdbot" title="Clawdbotからの移行" subtitle="Clawdbot環境からOpenClawへの移行手順とトラブルシューティング" >}}
+  {{< card link="/setup/webchat-settings" title="WebChat設定リファレンス" subtitle="WebChat UIの設定項目と使い方" >}}
+{{< /cards >}}

@@ -1,10 +1,6 @@
 ---
 title: OpenClaw 日本語Wiki
 toc: false
-_build:
-  render: always
-cascade:
-  type: default
 ---
 
 <style>.article-container h1:first-of-type, main > .content > h1:first-child, article h1:first-of-type { display: none; }</style>
@@ -13,30 +9,22 @@ cascade:
   <img src="https://yozora4416.github.io/openclaw-wiki-ja/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
 </div>
 
-### セットアップ
-
-{{< cards >}}
-  {{< card link="/setup/getting-started" title="インストールと初期設定" subtitle="OpenClawのインストールから起動までの手順" >}}
-  {{< card link="/setup/migration-from-clawdbot" title="Clawdbotからの移行" subtitle="Clawdbot環境からOpenClawへの移行手順とトラブルシューティング" >}}
-  {{< card link="/setup/webchat-settings" title="WebChat設定リファレンス" subtitle="WebChat UIの設定項目と使い方" >}}
-{{< /cards >}}
-
-### ガイド
-
-{{< cards >}}
-  {{< card link="/customize/webchat-ja" title="WebChat日本語化パッチ" subtitle="WebChat UIを日本語化する方法" >}}
-{{< /cards >}}
-
 ### リリースノート
 
 {{< cards >}}
   {{< card link="/releases/2026-2-12" title="v2026.2.12" subtitle="セキュリティ強化、plugins uninstall、Telegram blockquote対応など" >}}
 {{< /cards >}}
 
-### Wikiについて
+### Wikiノート
 
 {{< cards >}}
-  {{< card link="/contribute" title="記事を追加・修正する" subtitle="このWikiへの貢献方法（GitHub PRベース）" >}}
+  {{< card link="/wiki-notes" title="Wikiノート一覧 →" subtitle="日本語化パッチ、Tips、トラブルシューティングなどのガイド集" >}}
+{{< /cards >}}
+
+### 初期設定ガイド
+
+{{< cards >}}
+  {{< card link="/setup" title="初期設定ガイド一覧 →" subtitle="インストール、初期設定、Clawdbotからの移行" >}}
 {{< /cards >}}
 
 ---
