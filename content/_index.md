@@ -9,22 +9,11 @@ toc: false
   <img src="https://yozora4416.github.io/openclaw-wiki-ja/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
 </div>
 
-### リリースノート
-
-{{< cards >}}
-  {{< card link="/releases/2026-2-12" title="v2026.2.12" subtitle="セキュリティ強化、plugins uninstall、Telegram blockquote対応など" >}}
-{{< /cards >}}
-
-### Wikiノート
-
-{{< cards >}}
-  {{< card link="/wiki-notes" title="Wikiノート一覧 →" subtitle="日本語化パッチ、Tips、トラブルシューティングなどのガイド集" >}}
-{{< /cards >}}
-
-### 初期設定ガイド
-
-{{< cards >}}
-  {{< card link="/setup" title="初期設定ガイド一覧 →" subtitle="インストール、初期設定、Clawdbotからの移行" >}}
+{{< cards cols="2" >}}
+  {{< card link="/releases" title="📋 リリースノート" subtitle="OpenClaw各バージョンの変更点を日本語で解説" >}}
+  {{< card link="/wiki-notes" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
+  {{< card link="/setup" title="🚀 初期設定ガイド" subtitle="インストール、初期設定、Clawdbotからの移行" >}}
+  {{< card link="/contribute" title="📜 利用規約" subtitle="このWikiへの貢献方法とガイドライン" >}}
 {{< /cards >}}
 
 ---
