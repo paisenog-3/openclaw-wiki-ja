@@ -183,7 +183,7 @@ Claudeがコードを生成し、ファイルとして保存することもで�
 
 WebChatダッシュボードを日本語化するパッチを適用できます。
 
-詳しくは [WebChat日本語化パッチ]({{< relref "/customize/webchat-ja" >}}) をご覧ください。
+詳しくは [WebChat日本語化パッチ]({{< relref "/wiki-notes/webchat-ja" >}}) をご覧ください。
 
 ### 日本語フォントの設定
 
@@ -260,7 +260,7 @@ openclaw gateway logs
 OpenClawのセットアップが完了しました！次は以下をお試しください：
 
 - [WebChat設定ガイド]({{< relref "/setup/webchat-settings" >}}) - WebChatの詳細設定
-- [WebChat日本語化パッチ]({{< relref "/customize/webchat-ja" >}}) - UIを日本語化
+- [WebChat日本語化パッチ]({{< relref "/wiki-notes/webchat-ja" >}}) - UIを日本語化
 - [OpenClaw公式ドキュメント](https://openclaw.io/docs) - 詳細な機能ガイド
 
 ---
