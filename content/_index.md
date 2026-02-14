@@ -4,10 +4,8 @@ toc: false
 ---
 
 <div class="hx:mt-8 hx:mb-8 hx:text-center">
-  ![OpenClaw 日本語Wiki](images/hero.jpg)
+  <img src="https://yozora4416.github.io/openclaw-wiki-ja/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
 </div>
-
-<div class="hx:mt-8"></div>
 
 ### セットアップ
 
