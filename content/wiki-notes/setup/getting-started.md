@@ -36,9 +36,18 @@ OpenClawは、Claude AIをローカル環境で活用するためのオープン
 | RAM | 4GB以上推奨 |
 | ストレージ | 2GB以上の空き容量 |
 
-### 必要なアカウント
+### 必要なアカウント（いずれか1つ）
 
-- **Anthropic APIキー**: [Anthropic Console](https://console.anthropic.com/)で取得
+OpenClawは複数のAIプロバイダーに対応しています。利用したいプロバイダーのAPIキーを用意してください。
+
+| プロバイダー | APIキー取得先 | 備考 |
+|-------------|-------------|------|
+| **Anthropic（推奨）** | [Anthropic Console](https://console.anthropic.com/) | Claude モデル。OpenClawの全機能に最適化 |
+| **OpenAI** | [OpenAI Platform](https://platform.openai.com/) | GPTモデル、Codex |
+| **Google** | [Google AI Studio](https://aistudio.google.com/) | Gemini モデル |
+| **Groq** | [Groq Console](https://console.groq.com/) | 高速推論 |
+| **OpenRouter** | [OpenRouter](https://openrouter.ai/) | 複数プロバイダーを1つのAPIキーで利用可 |
+| **Ollama（ローカル）** | [Ollama](https://ollama.com/) | APIキー不要。ローカルでモデルを実行 |
 
 ---
 
@@ -95,20 +104,26 @@ openclaw --version
 
 ### ステップ3: 初期設定
 
-#### Anthropic APIキーの設定
+#### APIキーの設定
 
-OpenClawを初めて起動する前に、APIキーを設定します。
+OpenClawを初めて起動する前に、利用するプロバイダーのAPIキーを設定します。
 
 ```bash
-
+# Anthropicの場合
 export ANTHROPIC_API_KEY="your-api-key-here"
 
+# OpenAIの場合
+export OPENAI_API_KEY="your-api-key-here"
 
+# Google Geminiの場合
+export GOOGLE_API_KEY="your-api-key-here"
+
+# 永続化（~/.bashrc に追記）
 echo 'export ANTHROPIC_API_KEY="your-api-key-here"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-または、OpenClaw起動時に対話的に設定することもできます。
+OpenClaw起動時に対話的に設定することもできます。複数のプロバイダーを同時に設定して、用途に応じて切り替えることも可能です。
 
 ---
 
