@@ -84,7 +84,7 @@ Write-Host ""
 Write-Host "🚀 WSL 上で OpenClaw インストーラーを実行します..." -ForegroundColor Cyan
 Write-Host ""
 
-wsl -d $ubuntuDistro bash -lc "curl -fsSL https://paisenog-3.github.io/openclaw-wiki-ja/scripts/install.sh | bash"
+wsl -d $ubuntuDistro bash -lc "curl -fsSL https://paisenog-3.github.io/openclaw-wiki-ja/scripts/install.sh -o /tmp/openclaw-install.sh && bash /tmp/openclaw-install.sh && rm -f /tmp/openclaw-install.sh"
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host ""

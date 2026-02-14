@@ -74,14 +74,14 @@ validate_credential() {
     ANTHROPIC_API_KEY)
       if [[ ! "$value" =~ ^sk-ant- ]]; then
         echo "⚠️  Anthropic APIキーは通常「sk-ant-」で始まります。正しい値か確認してください。"
-        read -rp "   このまま続行しますか？ (y/N): " CONFIRM
+        read -rp "   このまま続行しますか？ (y/N): " CONFIRM < /dev/tty
         [[ "$CONFIRM" =~ ^[yY] ]] || return 1
       fi
       ;;
     OPENAI_API_KEY)
       if [[ ! "$value" =~ ^sk- ]]; then
         echo "⚠️  OpenAI APIキーは通常「sk-」で始まります。正しい値か確認してください。"
-        read -rp "   このまま続行しますか？ (y/N): " CONFIRM
+        read -rp "   このまま続行しますか？ (y/N): " CONFIRM < /dev/tty
         [[ "$CONFIRM" =~ ^[yY] ]] || return 1
       fi
       ;;
@@ -217,7 +217,7 @@ install_openclaw() {
   if command -v openclaw &>/dev/null; then
     CURRENT_VERSION=$(openclaw --version 2>/dev/null || echo "不明")
     echo "⚠️  OpenClaw がすでにインストールされています (${CURRENT_VERSION})"
-    read -rp "   上書きインストールしますか？ (y/N): " OVERWRITE
+    read -rp "   上書きインストールしますか？ (y/N): " OVERWRITE < /dev/tty
     if [[ ! "$OVERWRITE" =~ ^[yY] ]]; then
       echo "⏭️  スキップしました"
       return 0
@@ -263,7 +263,7 @@ setup_credentials() {
     echo "     → 完全無料、インターネット不要"
     echo "     → ただしGPU搭載PCが必要（VRAM 8GB以上推奨）"
     echo ""
-    read -rp "利用方法を選択してください [1/2/3]: " AUTH_METHOD
+    read -rp "利用方法を選択してください [1/2/3]: " AUTH_METHOD < /dev/tty
 
     case "$AUTH_METHOD" in
       1) setup_subscription; break ;;
@@ -278,265 +278,275 @@ setup_credentials() {
 
 # ── サブスクリプション（認証トークン）設定 ──
 setup_subscription() {
-  echo ""
-  echo "───────────────────────────────────"
-  echo "📋 サブスクリプション（認証トークン）"
-  echo "───────────────────────────────────"
-  echo ""
-  echo "どのサービスのサブスクリプションをお持ちですか？"
-  echo ""
-  echo "  1) Anthropic（Claude Pro / Max）"
-  echo "  2) OpenAI（ChatGPT Plus / Pro）"
-  echo "  3) Google（Gemini Advanced）"
-  echo ""
-  read -rp "番号: " SUB_PROVIDER
+  while true; do
+    echo ""
+    echo "───────────────────────────────────"
+    echo "📋 サブスクリプション（認証トークン）"
+    echo "───────────────────────────────────"
+    echo ""
+    echo "どのサービスのサブスクリプションをお持ちですか？"
+    echo ""
+    echo "  1) Anthropic（Claude Pro / Max）"
+    echo "  2) OpenAI（ChatGPT Plus / Pro）"
+    echo "  3) Google（Gemini Advanced）"
+    echo ""
+    read -rp "番号: " SUB_PROVIDER < /dev/tty
 
-  case "$SUB_PROVIDER" in
-    1)
-      SELECTED_PROVIDER="anthropic"
-      echo ""
-      echo "📖 Claude の認証トークン取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. ブラウザで https://claude.ai にログイン"
-      echo "  2. F12キーでデベロッパーツールを開く"
-      echo "  3. 「Application」→「Cookies」→「https://claude.ai」を選択"
-      echo "  4. 「sessionKey」の値をコピー"
-      echo "───────────────────────────────────"
-      echo ""
-      while true; do
-        read -rsp "認証トークンを貼り付けてください（入力は非表示）: " TOKEN; echo
-        if [ -n "$TOKEN" ]; then
-          echo "   入力値: $(mask_credential "$TOKEN")"
-          save_credential "ANTHROPIC_SESSION_TOKEN" "$TOKEN"
-          echo "✅ 認証トークンを ~/.openclaw/credentials に保存しました（chmod 600）"
-          break
-        else
-          echo "⚠️  認証トークンが必要です。上の手順に従って取得してください。"
-        fi
-      done
-      ;;
-    2)
-      SELECTED_PROVIDER="openai"
-      echo ""
-      echo "📖 ChatGPT の認証トークン取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. ブラウザで https://chatgpt.com にログイン"
-      echo "  2. F12キーでデベロッパーツールを開く"
-      echo "  3. 「Application」→「Cookies」→「https://chatgpt.com」を選択"
-      echo "  4. 「__Secure-next-auth.session-token」の値をコピー"
-      echo "───────────────────────────────────"
-      echo ""
-      while true; do
-        read -rsp "認証トークンを貼り付けてください（入力は非表示）: " TOKEN; echo
-        if [ -n "$TOKEN" ]; then
-          echo "   入力値: $(mask_credential "$TOKEN")"
-          save_credential "OPENAI_SESSION_TOKEN" "$TOKEN"
-          echo "✅ 認証トークンを ~/.openclaw/credentials に保存しました（chmod 600）"
-          break
-        else
-          echo "⚠️  認証トークンが必要です。上の手順に従って取得してください。"
-        fi
-      done
-      ;;
-    3)
-      SELECTED_PROVIDER="google"
-      echo ""
-      echo "📖 Gemini の認証トークン取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. ブラウザで https://gemini.google.com にログイン"
-      echo "  2. F12キーでデベロッパーツールを開く"
-      echo "  3. 「Application」→「Cookies」→「https://gemini.google.com」を選択"
-      echo "  4. 「__Secure-1PSID」の値をコピー"
-      echo "───────────────────────────────────"
-      echo ""
-      while true; do
-        read -rsp "認証トークンを貼り付けてください（入力は非表示）: " TOKEN; echo
-        if [ -n "$TOKEN" ]; then
-          echo "   入力値: $(mask_credential "$TOKEN")"
-          save_credential "GOOGLE_SESSION_TOKEN" "$TOKEN"
-          echo "✅ 認証トークンを ~/.openclaw/credentials に保存しました（chmod 600）"
-          break
-        else
-          echo "⚠️  認証トークンが必要です。上の手順に従って取得してください。"
-        fi
-      done
-      ;;
-    *)
-      echo "❌ 1〜3のいずれかを選択してください"
-      setup_subscription
-      return
-      ;;
-  esac
+    case "$SUB_PROVIDER" in
+      1)
+        SELECTED_PROVIDER="anthropic"
+        echo ""
+        echo "📖 Claude の認証トークン取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. ブラウザで https://claude.ai にログイン"
+        echo "  2. F12キーでデベロッパーツールを開く"
+        echo "  3. 「Application」→「Cookies」→「https://claude.ai」を選択"
+        echo "  4. 「sessionKey」の値をコピー"
+        echo "───────────────────────────────────"
+        echo ""
+        while true; do
+          read -rsp "認証トークンを貼り付けてください（入力は非表示）: " TOKEN < /dev/tty; echo
+          if [ -n "$TOKEN" ]; then
+            echo "   入力値: $(mask_credential "$TOKEN")"
+            save_credential "ANTHROPIC_SESSION_TOKEN" "$TOKEN"
+            echo "✅ 認証トークンを ~/.openclaw/credentials に保存しました（chmod 600）"
+            break
+          else
+            echo "⚠️  認証トークンが必要です。上の手順に従って取得してください。"
+          fi
+        done
+        return
+        ;;
+      2)
+        SELECTED_PROVIDER="openai"
+        echo ""
+        echo "📖 ChatGPT の認証トークン取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. ブラウザで https://chatgpt.com にログイン"
+        echo "  2. F12キーでデベロッパーツールを開く"
+        echo "  3. 「Application」→「Cookies」→「https://chatgpt.com」を選択"
+        echo "  4. 「__Secure-next-auth.session-token」の値をコピー"
+        echo "───────────────────────────────────"
+        echo ""
+        while true; do
+          read -rsp "認証トークンを貼り付けてください（入力は非表示）: " TOKEN < /dev/tty; echo
+          if [ -n "$TOKEN" ]; then
+            echo "   入力値: $(mask_credential "$TOKEN")"
+            save_credential "OPENAI_SESSION_TOKEN" "$TOKEN"
+            echo "✅ 認証トークンを ~/.openclaw/credentials に保存しました（chmod 600）"
+            break
+          else
+            echo "⚠️  認証トークンが必要です。上の手順に従って取得してください。"
+          fi
+        done
+        return
+        ;;
+      3)
+        SELECTED_PROVIDER="google"
+        echo ""
+        echo "📖 Gemini の認証トークン取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. ブラウザで https://gemini.google.com にログイン"
+        echo "  2. F12キーでデベロッパーツールを開く"
+        echo "  3. 「Application」→「Cookies」→「https://gemini.google.com」を選択"
+        echo "  4. 「__Secure-1PSID」の値をコピー"
+        echo "───────────────────────────────────"
+        echo ""
+        while true; do
+          read -rsp "認証トークンを貼り付けてください（入力は非表示）: " TOKEN < /dev/tty; echo
+          if [ -n "$TOKEN" ]; then
+            echo "   入力値: $(mask_credential "$TOKEN")"
+            save_credential "GOOGLE_SESSION_TOKEN" "$TOKEN"
+            echo "✅ 認証トークンを ~/.openclaw/credentials に保存しました（chmod 600）"
+            break
+          else
+            echo "⚠️  認証トークンが必要です。上の手順に従って取得してください。"
+          fi
+        done
+        return
+        ;;
+      *)
+        echo "❌ 1〜3のいずれかを選択してください"
+        continue
+        ;;
+    esac
+  done
 }
 
 # ── APIキー設定 ──
 setup_apikey() {
-  echo ""
-  echo "───────────────────────────────────"
-  echo "📋 APIキー（従量課金）"
-  echo "───────────────────────────────────"
-  echo ""
-  echo "どのプロバイダーを利用しますか？"
-  echo ""
-  echo "  1) Anthropic（推奨）  → Claude モデル"
-  echo "  2) OpenAI            → GPTモデル、Codex"
-  echo "  3) Google            → Gemini モデル"
-  echo "  4) Groq              → 高速推論"
-  echo "  5) OpenRouter        → 複数プロバイダーを1つのキーで"
-  echo ""
-  read -rp "番号: " PROVIDER
-
-  case "$PROVIDER" in
-    1)
-      SELECTED_PROVIDER="anthropic"
-      KEY_NAME="ANTHROPIC_API_KEY"
-      echo ""
-      echo "📖 Anthropic APIキーの取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://console.anthropic.com/ にアクセス"
-      echo "  2. アカウントを作成またはログイン"
-      echo "  3. 「API Keys」→「Create Key」をクリック"
-      echo "  4. 生成されたキー（sk-ant-...）をコピー"
-      echo "───────────────────────────────────"
-      ;;
-    2)
-      SELECTED_PROVIDER="openai"
-      KEY_NAME="OPENAI_API_KEY"
-      echo ""
-      echo "📖 OpenAI APIキーの取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://platform.openai.com/ にアクセス"
-      echo "  2. アカウントを作成またはログイン"
-      echo "  3. 「API Keys」→「Create new secret key」をクリック"
-      echo "  4. 生成されたキー（sk-...）をコピー"
-      echo "───────────────────────────────────"
-      ;;
-    3)
-      SELECTED_PROVIDER="google"
-      KEY_NAME="GOOGLE_API_KEY"
-      echo ""
-      echo "📖 Google APIキーの取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://aistudio.google.com/ にアクセス"
-      echo "  2. Googleアカウントでログイン"
-      echo "  3. 「Get API Key」→「Create API key」をクリック"
-      echo "  4. 生成されたキーをコピー"
-      echo "───────────────────────────────────"
-      ;;
-    4)
-      SELECTED_PROVIDER="groq"
-      KEY_NAME="GROQ_API_KEY"
-      echo ""
-      echo "📖 Groq APIキーの取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://console.groq.com/ にアクセス"
-      echo "  2. アカウントを作成またはログイン"
-      echo "  3. 「API Keys」→「Create API Key」をクリック"
-      echo "  4. 生成されたキーをコピー"
-      echo "───────────────────────────────────"
-      ;;
-    5)
-      SELECTED_PROVIDER="openrouter"
-      KEY_NAME="OPENROUTER_API_KEY"
-      echo ""
-      echo "📖 OpenRouter APIキーの取得手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://openrouter.ai/ にアクセス"
-      echo "  2. アカウントを作成またはログイン"
-      echo "  3. 「Keys」→「Create Key」をクリック"
-      echo "  4. 生成されたキーをコピー"
-      echo "───────────────────────────────────"
-      ;;
-    *)
-      echo "❌ 無効な選択です"
-      setup_apikey
-      return
-      ;;
-  esac
-
-  echo ""
   while true; do
-    read -rsp "${KEY_NAME} を貼り付けてください（入力は非表示）: " API_KEY; echo
-    if [ -n "$API_KEY" ]; then
-      if ! validate_credential "$KEY_NAME" "$API_KEY"; then
+    echo ""
+    echo "───────────────────────────────────"
+    echo "📋 APIキー（従量課金）"
+    echo "───────────────────────────────────"
+    echo ""
+    echo "どのプロバイダーを利用しますか？"
+    echo ""
+    echo "  1) Anthropic（推奨）  → Claude モデル"
+    echo "  2) OpenAI            → GPTモデル、Codex"
+    echo "  3) Google            → Gemini モデル"
+    echo "  4) Groq              → 高速推論"
+    echo "  5) OpenRouter        → 複数プロバイダーを1つのキーで"
+    echo ""
+    read -rp "番号: " PROVIDER < /dev/tty
+
+    case "$PROVIDER" in
+      1)
+        SELECTED_PROVIDER="anthropic"
+        KEY_NAME="ANTHROPIC_API_KEY"
+        echo ""
+        echo "📖 Anthropic APIキーの取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. https://console.anthropic.com/ にアクセス"
+        echo "  2. アカウントを作成またはログイン"
+        echo "  3. 「API Keys」→「Create Key」をクリック"
+        echo "  4. 生成されたキー（sk-ant-...）をコピー"
+        echo "───────────────────────────────────"
+        ;;
+      2)
+        SELECTED_PROVIDER="openai"
+        KEY_NAME="OPENAI_API_KEY"
+        echo ""
+        echo "📖 OpenAI APIキーの取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. https://platform.openai.com/ にアクセス"
+        echo "  2. アカウントを作成またはログイン"
+        echo "  3. 「API Keys」→「Create new secret key」をクリック"
+        echo "  4. 生成されたキー（sk-...）をコピー"
+        echo "───────────────────────────────────"
+        ;;
+      3)
+        SELECTED_PROVIDER="google"
+        KEY_NAME="GOOGLE_API_KEY"
+        echo ""
+        echo "📖 Google APIキーの取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. https://aistudio.google.com/ にアクセス"
+        echo "  2. Googleアカウントでログイン"
+        echo "  3. 「Get API Key」→「Create API key」をクリック"
+        echo "  4. 生成されたキーをコピー"
+        echo "───────────────────────────────────"
+        ;;
+      4)
+        SELECTED_PROVIDER="groq"
+        KEY_NAME="GROQ_API_KEY"
+        echo ""
+        echo "📖 Groq APIキーの取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. https://console.groq.com/ にアクセス"
+        echo "  2. アカウントを作成またはログイン"
+        echo "  3. 「API Keys」→「Create API Key」をクリック"
+        echo "  4. 生成されたキーをコピー"
+        echo "───────────────────────────────────"
+        ;;
+      5)
+        SELECTED_PROVIDER="openrouter"
+        KEY_NAME="OPENROUTER_API_KEY"
+        echo ""
+        echo "📖 OpenRouter APIキーの取得手順："
+        echo "───────────────────────────────────"
+        echo "  1. https://openrouter.ai/ にアクセス"
+        echo "  2. アカウントを作成またはログイン"
+        echo "  3. 「Keys」→「Create Key」をクリック"
+        echo "  4. 生成されたキーをコピー"
+        echo "───────────────────────────────────"
+        ;;
+      *)
+        echo "❌ 無効な選択です"
         continue
+        ;;
+    esac
+
+    echo ""
+    while true; do
+      read -rsp "${KEY_NAME} を貼り付けてください（入力は非表示）: " API_KEY < /dev/tty; echo
+      if [ -n "$API_KEY" ]; then
+        if ! validate_credential "$KEY_NAME" "$API_KEY"; then
+          continue
+        fi
+        echo "   入力値: $(mask_credential "$API_KEY")"
+        save_credential "${KEY_NAME}" "${API_KEY}"
+        echo "✅ ${KEY_NAME} を ~/.openclaw/credentials に保存しました"
+        break
+      else
+        echo "⚠️  APIキーが必要です。上の手順に従って取得してください。"
       fi
-      echo "   入力値: $(mask_credential "$API_KEY")"
-      save_credential "${KEY_NAME}" "${API_KEY}"
-      echo "✅ ${KEY_NAME} を ~/.openclaw/credentials に保存しました"
-      break
-    else
-      echo "⚠️  APIキーが必要です。上の手順に従って取得してください。"
-    fi
+    done
+    return
   done
 }
 
 # ── ローカルモデル設定 ──
 setup_local() {
-  echo ""
-  echo "───────────────────────────────────"
-  echo "📋 ローカルモデル"
-  echo "───────────────────────────────────"
-  echo ""
-  echo "⚠️  ローカルモデルの実行には GPU（VRAM 8GB以上推奨）と"
-  echo "   大容量のストレージが必要です。"
-  echo ""
-  echo "どのツールを使いますか？"
-  echo ""
-  echo "  1) Ollama（推奨・最も手軽）"
-  echo "  2) LM Studio（GUI管理）"
-  echo "  3) llama.cpp（上級者向け）"
-  echo ""
-  read -rp "番号: " LOCAL_TOOL
+  while true; do
+    echo ""
+    echo "───────────────────────────────────"
+    echo "📋 ローカルモデル"
+    echo "───────────────────────────────────"
+    echo ""
+    echo "⚠️  ローカルモデルの実行には GPU（VRAM 8GB以上推奨）と"
+    echo "   大容量のストレージが必要です。"
+    echo ""
+    echo "どのツールを使いますか？"
+    echo ""
+    echo "  1) Ollama（推奨・最も手軽）"
+    echo "  2) LM Studio（GUI管理）"
+    echo "  3) llama.cpp（上級者向け）"
+    echo ""
+    read -rp "番号: " LOCAL_TOOL < /dev/tty
 
-  case "$LOCAL_TOOL" in
-    1)
-      echo ""
-      if command -v ollama &>/dev/null; then
-        echo "✅ Ollama が見つかりました"
+    case "$LOCAL_TOOL" in
+      1)
         echo ""
-        echo "モデルをダウンロードしますか？（例: llama3, gemma2, phi3）"
-        read -rp "モデル名を入力（スキップは Enter）: " MODEL_NAME
-        if [ -n "$MODEL_NAME" ]; then
-          echo "📥 ${MODEL_NAME} をダウンロード中..."
-          ollama pull "$MODEL_NAME"
-          echo "✅ ${MODEL_NAME} のダウンロードが完了しました"
+        if command -v ollama &>/dev/null; then
+          echo "✅ Ollama が見つかりました"
+          echo ""
+          echo "モデルをダウンロードしますか？（例: llama3, gemma2, phi3）"
+          read -rp "モデル名を入力（スキップは Enter）: " MODEL_NAME < /dev/tty
+          if [ -n "$MODEL_NAME" ]; then
+            echo "📥 ${MODEL_NAME} をダウンロード中..."
+            ollama pull "$MODEL_NAME"
+            echo "✅ ${MODEL_NAME} のダウンロードが完了しました"
+          fi
+        else
+          echo "📖 Ollama のインストール手順："
+          echo "───────────────────────────────────"
+          echo "  1. https://ollama.com/ にアクセス"
+          echo "  2. お使いのOS用のインストーラーをダウンロード"
+          echo "  3. インストール後、ターミナルで以下を実行："
+          echo "     ollama pull llama3"
+          echo "───────────────────────────────────"
         fi
-      else
-        echo "📖 Ollama のインストール手順："
+        return
+        ;;
+      2)
+        echo ""
+        echo "📖 LM Studio のインストール手順："
         echo "───────────────────────────────────"
-        echo "  1. https://ollama.com/ にアクセス"
+        echo "  1. https://lmstudio.ai/ にアクセス"
         echo "  2. お使いのOS用のインストーラーをダウンロード"
-        echo "  3. インストール後、ターミナルで以下を実行："
-        echo "     ollama pull llama3"
+        echo "  3. 起動してモデルを検索・ダウンロード"
+        echo "  4. 「Local Server」タブからAPIサーバーを起動"
         echo "───────────────────────────────────"
-      fi
-      ;;
-    2)
-      echo ""
-      echo "📖 LM Studio のインストール手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://lmstudio.ai/ にアクセス"
-      echo "  2. お使いのOS用のインストーラーをダウンロード"
-      echo "  3. 起動してモデルを検索・ダウンロード"
-      echo "  4. 「Local Server」タブからAPIサーバーを起動"
-      echo "───────────────────────────────────"
-      ;;
-    3)
-      echo ""
-      echo "📖 llama.cpp のインストール手順："
-      echo "───────────────────────────────────"
-      echo "  1. https://github.com/ggml-org/llama.cpp を参照"
-      echo "  2. ビルド手順に従ってインストール"
-      echo "  3. GGUF形式のモデルをダウンロードして実行"
-      echo "───────────────────────────────────"
-      ;;
-    *)
-      echo "❌ 無効な選択です"
-      setup_local
-      return
-      ;;
-  esac
+        return
+        ;;
+      3)
+        echo ""
+        echo "📖 llama.cpp のインストール手順："
+        echo "───────────────────────────────────"
+        echo "  1. https://github.com/ggml-org/llama.cpp を参照"
+        echo "  2. ビルド手順に従ってインストール"
+        echo "  3. GGUF形式のモデルをダウンロードして実行"
+        echo "───────────────────────────────────"
+        return
+        ;;
+      *)
+        echo "❌ 無効な選択です"
+        continue
+        ;;
+    esac
+  done
 }
 
 # ── モデル選択 ──
@@ -567,7 +577,7 @@ select_model() {
         ollama list 2>/dev/null || echo "  （モデルがまだありません）"
         echo ""
       fi
-      read -rp "モデル名を入力（例: llama3）: " MODEL
+      read -rp "モデル名を入力（例: llama3）: " MODEL < /dev/tty
       if [ -z "$MODEL" ]; then
         MODEL="llama3"
       fi
@@ -578,7 +588,7 @@ select_model() {
 
       if [ -z "$MODELS" ]; then
         echo "⚠️  モデル一覧を取得できませんでした"
-        read -rp "モデル名を手動入力してください: " MODEL
+        read -rp "モデル名を手動入力してください: " MODEL < /dev/tty
         if [ -z "$MODEL" ]; then
           MODEL="$(default_model_for_provider "$SELECTED_PROVIDER")"
         fi
@@ -593,7 +603,7 @@ select_model() {
         done <<< "$MODELS"
         echo ""
         echo "  番号を入力するか、モデル名を直接入力してください"
-        read -rp "選択: " MODEL_CHOICE
+        read -rp "選択: " MODEL_CHOICE < /dev/tty
 
         # 番号で選択された場合、モデル名に変換
         if [[ "$MODEL_CHOICE" =~ ^[0-9]+$ ]]; then
@@ -621,7 +631,7 @@ start_gateway() {
   echo "🚀 Gateway の起動"
   echo "═══════════════════════════════════"
   echo ""
-  read -rp "OpenClaw Gateway を起動しますか？ (Y/n): " START
+  read -rp "OpenClaw Gateway を起動しますか？ (Y/n): " START < /dev/tty
   if [[ "$START" =~ ^[nN] ]]; then
     echo ""
     echo "あとで以下のコマンドで起動できます："
