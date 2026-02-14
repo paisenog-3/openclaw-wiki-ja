@@ -8,7 +8,7 @@
 
 OpenClawを日本語環境で快適に使うための実践的な情報を共有するコミュニティ主導のWikiです。
 
-🌐 **サイト**: https://YOUR-USERNAME.github.io/openclaw-wiki-ja/
+🌐 **サイト**: https://yozora4416.github.io/openclaw-wiki-ja/
 
 ---
 
@@ -31,13 +31,13 @@ OpenClawを日本語環境で快適に使うための実践的な情報を共有
 
 ### Wikiを閲覧
 
-[https://YOUR-USERNAME.github.io/openclaw-wiki-ja/](https://YOUR-USERNAME.github.io/openclaw-wiki-ja/)
+[https://yozora4416.github.io/openclaw-wiki-ja/](https://yozora4416.github.io/openclaw-wiki-ja/)
 
 ### ローカルでWikiを起動
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/YOUR-USERNAME/openclaw-wiki-ja.git
+git clone https://github.com/yozora4416/openclaw-wiki-ja.git
 cd openclaw-wiki-ja
 
 # Hugoモジュールをダウンロード
@@ -175,7 +175,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/YOUR-USERNAME/openclaw-wiki-ja.git
+git clone https://github.com/yozora4416/openclaw-wiki-ja.git
 cd openclaw-wiki-ja
 
 # Hugoモジュールをダウンロード
@@ -228,7 +228,7 @@ Hugoビルド
   ↓
 GitHub Pagesにデプロイ
   ↓
-https://YOUR-USERNAME.github.io/openclaw-wiki-ja/ 更新
+https://yozora4416.github.io/openclaw-wiki-ja/ 更新
 ```
 
 ---
@@ -244,15 +244,15 @@ https://YOUR-USERNAME.github.io/openclaw-wiki-ja/ 更新
 - **OpenClaw公式サイト**: [https://openclaw.io](https://openclaw.io)
 - **Hugo**: [https://gohugo.io](https://gohugo.io)
 - **Hextraテーマ**: [https://imfing.github.io/hextra/](https://imfing.github.io/hextra/)
-- **GitHub Issues**: [Issues](https://github.com/YOUR-USERNAME/openclaw-wiki-ja/issues)
-- **GitHub Discussions**: [Discussions](https://github.com/YOUR-USERNAME/openclaw-wiki-ja/discussions)
+- **GitHub Issues**: [Issues](https://github.com/yozora4416/openclaw-wiki-ja/issues)
+- **GitHub Discussions**: [Discussions](https://github.com/yozora4416/openclaw-wiki-ja/discussions)
 
 ---
 
 ## 📞 お問い合わせ
 
-- **記事の誤り・改善提案**: [GitHub Issues](https://github.com/YOUR-USERNAME/openclaw-wiki-ja/issues)
-- **一般的な質問・議論**: [GitHub Discussions](https://github.com/YOUR-USERNAME/openclaw-wiki-ja/discussions)
+- **記事の誤り・改善提案**: [GitHub Issues](https://github.com/yozora4416/openclaw-wiki-ja/issues)
+- **一般的な質問・議論**: [GitHub Discussions](https://github.com/yozora4416/openclaw-wiki-ja/discussions)
 
 ---
 
