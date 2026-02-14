@@ -17,6 +17,10 @@ type: docs
   {{< card link="contribute" title="📜 利用規約・貢献ガイド" subtitle="このWikiへの貢献方法とガイドライン" >}}
 {{< /cards >}}
 
+<div class="hx:mt-6 hx:text-center">
+  <a href="https://github.com/paisenog-3/openclaw-wiki-ja/issues/new?template=article-submission.yml" target="_blank" style="display: inline-block; padding: 12px 32px; background: #2563eb; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">📝 記事を投稿する</a>
+</div>
+
 ---
 
 **公式サイト**: [openclaw.io](https://openclaw.io) ・ **公式ドキュメント**: [docs.openclaw.ai](https://docs.openclaw.ai) ・ **GitHub**: [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)

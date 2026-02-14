@@ -1,0 +1,64 @@
+name: "📝 記事を投稿する"
+description: "Wikiに新しい記事を投稿します"
+title: "[記事投稿] "
+labels: ["article-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 記事の投稿ありがとうございます！🌸
+        以下のフォームに記入してください。管理者が確認後、Wikiに掲載します。
+
+  - type: input
+    id: title
+    attributes:
+      label: 記事タイトル
+      placeholder: "例: Cronジョブの設定方法"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: カテゴリ
+      options:
+        - セットアップ（setup）
+        - スキル・プラグイン（skills）
+        - 運用Tips（tips）
+        - トラブルシューティング（troubleshooting）
+        - リリースノート（releases）
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: 記事の内容
+      description: "Markdown形式で書けます。見出し（##）や箇条書き（-）も使えます。"
+      placeholder: |
+        ## 概要
+        ここに概要を書く...
+
+        ## 手順
+        1. まず...
+        2. 次に...
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・メモ（任意）
+      description: "参考URLや補足事項があればここに"
+      placeholder: "参考: https://docs.openclaw.ai/..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 確認事項
+      options:
+        - label: この内容をWikiに掲載することに同意します
+          required: true
