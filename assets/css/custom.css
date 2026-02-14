@@ -6,6 +6,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* カードの縁取り強調 */
+.hextra-card {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+:root.dark .hextra-card {
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
 /* サイドバー右側に境界線 */
 .hextra-sidebar-container {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
