@@ -10,7 +10,7 @@ toc: false
 </div>
 
 {{< cards cols="2" >}}
-  {{< card link="/releases" title="📋 リリースノート" subtitle="OpenClaw各バージョンの変更点を日本語で解説" >}}
+  {{< card link="/releases" title="📋 リリースノート" subtitle="v2026.2.13 - Discordボイスメッセージとプレゼンス設定" >}}
   {{< card link="/wiki-notes" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
   {{< card link="/setup" title="🚀 初期設定ガイド" subtitle="インストール、初期設定、Clawdbotからの移行" >}}
   {{< card link="/contribute" title="📜 利用規約" subtitle="このWikiへの貢献方法とガイドライン" >}}

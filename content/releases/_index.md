@@ -11,20 +11,21 @@ OpenClawの各バージョンのリリースノート日本語版です。公式
 
 ---
 
-## 最新リリース: v2026.2.12（2026年2月12日）
+## 最新リリース: v2026.2.13（2026年2月13日）
 
-セキュリティ強化、plugins uninstall、Telegram blockquote対応など、重要な機能追加とセキュリティ修正が含まれています。
+Discordボイスメッセージ送信、プレゼンス設定、スレッド管理改善、そしてWeb UI画像表示の重要な修正が含まれています。
 
 {{< callout type="info" >}}
 **主なハイライト**:
-- セキュリティ強化（SSRF対策、session管理の強化）
-- `openclaw plugins uninstall` コマンド追加
-- Telegram blockquoteネイティブ対応
-- Discord role-based routing
-- Hook session routingの改善
+- Discordボイスメッセージ送信（波形プレビュー付き）
+- Discordプレゼンスステータス/アクティビティ設定
+- Slack/Pluginsスレッドオーナーシップ制御
+- GLM-5モデル対応
+- Web UI画像表示の修正（重要）
+- Gateway再起動時のメッセージ消失防止
 {{< /callout >}}
 
-[詳細を読む →](/releases/2026-2-12)
+[詳細を読む →](/releases/2026-2-13)
 
 ---
 
@@ -33,6 +34,7 @@ OpenClawの各バージョンのリリースノート日本語版です。公式
 <div class="hx:mt-6"></div>
 
 {{< cards >}}
+  {{< card link="/releases/2026-2-13" title="v2026.2.13" subtitle="2026年2月13日 - Discordボイスメッセージとプレゼンス設定" >}}
   {{< card link="/releases/2026-2-12" title="v2026.2.12" subtitle="2026年2月12日 - セキュリティ強化と機能追加" >}}
 {{< /cards >}}
 
