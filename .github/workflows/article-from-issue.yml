@@ -142,7 +142,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.issue.number,
-              body: `🌸 **ノートが公開されました！**\n\nあなたの投稿がコミュニティの力となり、きっと誰かの助けになります！\n\n👉 [公開されたノートを確認する](https://paisenog-3.github.io/openclaw-wiki-ja/${{ steps.parse.outputs.dir }}/${{ steps.parse.outputs.slug }}/)\n\n投稿ありがとうございます！\nコミュニティはいつでもあなたを歓迎しています 🙌`
+              body: `🌸 **ノートが公開されました！**\n\nあなたの投稿が力となり、きっと誰かの助けになります！\n\n👉 [公開されたノートを確認する](https://paisenog-3.github.io/openclaw-wiki-ja/${{ steps.parse.outputs.dir }}/${{ steps.parse.outputs.slug }}/)\n\n投稿ありがとうございます！\nコミュニティはいつでもあなたを歓迎しています 🙌`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
