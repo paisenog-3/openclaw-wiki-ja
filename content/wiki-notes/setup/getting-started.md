@@ -365,10 +365,10 @@ APIキーの場合：
 セットアップお疲れさまでした！次は以下の順番で進めましょう：
 
 {{< cards >}}
-  {{< card link="/wiki-notes/setup/security" title="🔒 セキュリティ初期設定" subtitle="まず最初にセキュリティを確認" >}}
-  {{< card link="/wiki-notes/usage/basics" title="💬 基本的な使い方" subtitle="WebChatでの対話を始める" >}}
-  {{< card link="/wiki-notes/webchat-ja" title="🇯🇵 WebChat日本語化" subtitle="UIを日本語化する" >}}
-  {{< card link="/wiki-notes/setup/webchat-settings" title="⚙️ WebChat設定" subtitle="詳細なカスタマイズ" >}}
+  {{< card link="../security" title="🔒 セキュリティ初期設定" subtitle="まず最初にセキュリティを確認" >}}
+  {{< card link="../../usage/basics" title="💬 基本的な使い方" subtitle="WebChatでの対話を始める" >}}
+  {{< card link="../../webchat-ja" title="🇯🇵 WebChat日本語化" subtitle="UIを日本語化する" >}}
+  {{< card link="../webchat-settings" title="⚙️ WebChat設定" subtitle="詳細なカスタマイズ" >}}
 {{< /cards >}}
 
 ---
