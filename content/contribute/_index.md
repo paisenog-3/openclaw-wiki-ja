@@ -105,8 +105,7 @@ breadcrumbs: false
 
 ## お問い合わせ
 
-- [GitHub Issues](https://github.com/paisenog-3/openclaw-wiki-ja/issues) — バグ報告・機能提案
-- [GitHub Discussions](https://github.com/paisenog-3/openclaw-wiki-ja/discussions) — 質問・議論
+バグ報告・機能提案・質問は [GitHub Discussions](https://github.com/paisenog-3/openclaw-wiki-ja/discussions) にお願いします。
 
 ---
 
