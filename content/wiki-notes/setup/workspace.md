@@ -16,13 +16,13 @@ tags: ["セットアップ", "ワークスペース", "カスタマイズ"]
 {{< tab >}}
 Spotlight（`⌘ + Space`）で「ターミナル」と検索して起動し、以下を実行：
 ```bash
-npx @openclaw/workspace-wizard
+npx openclaw-workspace-wizard
 ```
 {{< /tab >}}
 {{< tab >}}
 お使いのターミナルエミュレータ（GNOME Terminal、Konsole等）を開いて以下を実行：
 ```bash
-npx @openclaw/workspace-wizard
+npx openclaw-workspace-wizard
 ```
 {{< /tab >}}
 {{< tab >}}
@@ -32,7 +32,7 @@ wsl
 ```
 WSLのプロンプトが表示されたら、ウィザードを実行します：
 ```bash
-npx @openclaw/workspace-wizard
+npx openclaw-workspace-wizard
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -49,7 +49,7 @@ npx @openclaw/workspace-wizard
 
 ### 方法1: ウィザードで一括設定（推奨）
 
-上記の `npx @openclaw/workspace-wizard` を実行すると、質問形式で必要な設定をすべて行えます。初回セットアップでは**抜け漏れなく確実に設定できる**この方法を推奨します。
+上記の `npx openclaw-workspace-wizard` を実行すると、質問形式で必要な設定をすべて行えます。初回セットアップでは**抜け漏れなく確実に設定できる**この方法を推奨します。
 
 ### 方法2: AIとの会話で設定
 
