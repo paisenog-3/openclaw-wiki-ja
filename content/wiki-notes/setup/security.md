@@ -1,6 +1,6 @@
 ---
 title: "セキュリティ初期設定"
-weight: 20
+weight: 11
 description: "OpenClawインストール後に行うべきセキュリティ設定の包括的ガイド"
 tags: ["セキュリティ", "セットアップ"]
 ---
