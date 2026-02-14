@@ -1,6 +1,7 @@
 ---
 title: リリースノート
 weight: 5
+breadcrumbs: false
 sidebar:
   open: true
 cascade:

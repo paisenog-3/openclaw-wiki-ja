@@ -101,12 +101,6 @@
     {{- else -}}
       <div class="hx:ltr:pr-0 hx:overflow-hidden">
         <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'>
-          {{/* カテゴリトップページリンク */}}
-          {{- $sectionActive := eq $pageURL $context.RelPermalink -}}
-          {{- $sectionTopTitle := printf "%sトップ" (partial "utils/title" $context) -}}
-          <li class="hx:flex hx:flex-col">
-            {{- template "sidebar-item-link" dict "active" $sectionActive "title" $sectionTopTitle "link" $context.RelPermalink -}}
-          </li>
           {{- range $items.ByWeight }}
             {{- $active := eq $pageURL .RelPermalink -}}
             {{- $shouldOpen := or (.Params.sidebar.open) (.IsAncestor $page) $active | default true }}
@@ -172,10 +166,11 @@
   {{- $isSection := false -}}
   {{- with .context }}{{- if or .RegularPages .Sections }}{{- $isSection = true -}}{{- end }}{{- end -}}
   {{- if $isSection -}}
-  {{/* Section header: toggle + category top link */}}
-  <button
-    onclick="this.parentElement.classList.toggle('open')"
-    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word] hx:w-full hx:text-left hx:border-0 hx:bg-transparent
+  {{/* Section header: link to section top + toggle tree */}}
+  <a
+    href="{{ .link }}"
+    onclick="event.preventDefault(); var li = this.parentElement; if (!li.classList.contains('open')) { li.classList.add('open'); } window.location.href = this.href;"
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
     {{- if .active }}
       hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500
     {{- else }}
@@ -183,10 +178,10 @@
     {{- end -}}"
   >
     {{- .title -}}
-    <span>
+    <span onclick="event.preventDefault(); event.stopPropagation(); this.closest('li').classList.toggle('open');">
       {{- template "sidebar-collapsible-button" -}}
     </span>
-  </button>
+  </a>
   {{- else -}}
   <a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
