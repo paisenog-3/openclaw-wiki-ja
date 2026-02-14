@@ -36,7 +36,7 @@ jobs:
             const notes = getField('補足・メモ（任意）');
             
             const categoryMap = {
-              'セットアップ（setup）': 'setup',
+              'セットアップ（setup）': 'wiki-notes',
               'スキル・プラグイン（skills）': 'wiki-notes',
               '運用Tips（tips）': 'wiki-notes',
               'トラブルシューティング（troubleshooting）': 'wiki-notes',

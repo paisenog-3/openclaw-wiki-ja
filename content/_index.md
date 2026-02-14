@@ -25,7 +25,6 @@ breadcrumbs: false
 
 {{< cards cols="2" >}}
   {{< card link="releases" title="📋 リリースノート" subtitle="最新版 v2026.2.13 の変更履歴と新機能" >}}
-  {{< card link="setup" title="🚀 初期設定ガイド" subtitle="インストール、移行、WebChat設定" >}}
   {{< card link="contribute" title="📜 貢献ガイド・利用規約" subtitle="投稿ルール、寄与割合、ライセンス" >}}
 {{< /cards >}}
 
