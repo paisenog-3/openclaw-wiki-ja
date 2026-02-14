@@ -260,14 +260,14 @@ openclaw config import /path/to/config.json
 
 1. **Settings** → **Language** が `ja-JP` になっているか確認
 2. ページをリロード
-3. [日本語化パッチ]({{< relref "/wiki-notes/webchat-ja" >}})を適用
+3. [日本語化パッチ]({{< relref "/wiki-notes/customize/webchat-ja" >}})を適用
 
 ---
 
 ## 関連記事
 
 - [OpenClawセットアップガイド]({{< relref "/wiki-notes/setup/getting-started" >}}) - 初期セットアップ
-- [WebChat日本語化パッチ]({{< relref "/wiki-notes/webchat-ja" >}}) - UIの日本語化
+- [WebChat日本語化パッチ]({{< relref "/wiki-notes/customize/webchat-ja" >}}) - UIの日本語化
 
 ---
 
