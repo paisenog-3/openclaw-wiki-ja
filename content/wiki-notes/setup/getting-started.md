@@ -27,13 +27,11 @@ OpenClawは**サブスクリプション**・**APIキー**・**ローカルモ�
 ChatGPTやClaudeなどのサブスクリプション契約がある場合、APIキーの別途契約は不要です。
 {{< /callout >}}
 
-| プロバイダー | 対象プラン | 備考 |
-|-------------|-----------|------|
-| **Anthropic** | Claude Pro / Max | サブスク枠内で利用可能 |
-| **OpenAI** | ChatGPT Plus / Pro | サブスク枠内で利用可能 |
-| **Google** | Gemini Advanced | サブスク枠内で利用可能 |
-
-セッショントークンの取得方法は、`openclaw configure --section model` コマンドで案内されます。
+| プロバイダー | 対象プラン | トークン取得先 | 備考 |
+|-------------|-----------|---------------|------|
+| **Anthropic** | Claude Pro / Max | [claude.ai](https://claude.ai/) からセッショントークンを取得 | サブスク枠内で利用可能 |
+| **OpenAI** | ChatGPT Plus / Pro | [chatgpt.com](https://chatgpt.com/) からセッショントークンを取得 | サブスク枠内で利用可能 |
+| **Google** | Gemini Advanced | [gemini.google.com](https://gemini.google.com/) からセッショントークンを取得 | サブスク枠内で利用可能 |
 
 ### 🔐 APIキーで利用する場合
 
@@ -89,9 +87,9 @@ irm https://paisenog-3.github.io/openclaw-wiki-ja/scripts/install.ps1 | iex
 
 ---
 
-## 📖 インストーラーの進め方
+### 📖 インストーラーの進め方
 
-インストーラーを実行すると、以下の順番で処理が進みます。画面の指示に沿って進めてください。
+インストーラーを実行すると、以下の順番で質問されます。画面の指示に沿って進めてください。
 
 {{< tabs items="Windows,Mac / Linux" >}}
 
@@ -134,14 +132,14 @@ WSL2とUbuntuが既にインストール済みの場合、この手順はスキ�
 🚀 WSL 上で OpenClaw インストーラーを実行します...
 ```
 
-#### ② Node.js の確認とインストール（自動）
+#### ② Node.js の確認（自動）
 
 ```
 🔍 Node.js を確認中...
 ✅ Node.js v22.x.x が見つかりました
 ```
 
-未インストールの場合は推奨バージョンが自動でインストールされます。そのまま待ってください。
+すでにインストール済みなら自動でスキップされます。未インストールの場合は自動でインストールが始まるので、そのまま待ってください。
 
 #### ③ OpenClaw のインストール（自動）
 
@@ -150,70 +148,111 @@ WSL2とUbuntuが既にインストール済みの場合、この手順はスキ�
 ✅ OpenClaw 2026.x.x をインストールしました
 ```
 
-常に最新版がインストールされます。
+常に最新版がインストールされます。すでにインストール済みの場合は上書き確認が出ます：
 
-#### ④ セキュリティ警告の確認
+```
+⚠️  OpenClaw がすでにインストールされています
+   上書きインストールしますか？ (y/N):
+```
 
-セキュリティ注意事項が表示されます。内容を確認して「Yes」を選択してください。
+→ 最新版にしたい場合は **`y`**、そのままでよければ **Enter**
 
-![セキュリティ警告画面](/images/onboard/01-security.png)
+#### ④ 認証方法の選択
 
-#### ⑤ フロー選択
+```
+🔑 認証設定
+  1) サブスクリプション（認証トークン）
+  2) APIキー（従量課金）
+  3) ローカルモデル（Ollama等）
 
-**QuickStart**（デフォルト設定・推奨）または **Manual**（詳細設定）を選択します。
+利用方法を選択してください [1/2/3]:
+```
 
-![QuickStart/Manual選択画面](/images/onboard/02-mode.png)
+| 選択 | こんな人向け |
+|------|------------|
+| **1** | ChatGPT Plus/ProやClaude Pro/Maxを契約中 → 追加料金なし |
+| **2** | サブスクなし、または大量に使いたい → 従量課金 |
+| **3** | GPU搭載PCがある → 完全無料・オフライン |
+
+#### ⑤ プロバイダーの選択（④で 1 or 2 を選んだ場合）
+
+サブスクリプションの場合：
+```
+どのサービスのサブスクリプションをお持ちですか？
+  1) Anthropic（Claude Pro / Max）
+  2) OpenAI（ChatGPT Plus / Pro）
+  3) Google（Gemini Advanced）
+```
+
+→ 自分が契約しているサービスの番号を入力。トークンの取得手順とURLが画面に表示されます。
+
+APIキーの場合：
+```
+どのプロバイダーを利用しますか？
+  1) Anthropic（推奨）
+  2) OpenAI
+  3) Google
+  4) Groq
+  5) OpenRouter
+```
+
+→ 利用したいプロバイダーの番号を入力。取得手順とURLが画面に表示されます。
+
+#### ⑥ トークン / APIキーの入力
+
+⑤で選択したプロバイダーの取得手順が画面に表示されます。
+
+```
+認証トークンを貼り付けてください:
+```
+
+→ 画面の手順に従ってトークンまたはAPIキーを取得し、貼り付けてください。入力するまで先に進めません。
 
 {{< callout type="info" >}}
-**初めての方はQuickStartがおすすめです。** 必要な設定がデフォルト値で自動的に適用され、すぐに使い始められます。
+ローカルモデル（④で3を選択）の場合、この手順はスキップされます。
 {{< /callout >}}
 
-#### ⑥ チャネル選択
+#### ⑦ デフォルトモデルの選択
 
-メッセージングアプリ（Telegram、Discord、WhatsApp等）との連携を設定できます。  
-後から設定することもできるので、**「Skip for now」** を選んでも問題ありません。
-
-![チャネル選択画面](/images/onboard/08-channel-select.png)
-
-#### ⑦ 認証設定（セットアップ完了後に実施）
-
-{{< callout type="info" >}}
-**QuickStartではデフォルトモデル（anthropic/claude-sonnet-4-5）が自動設定されます。** 認証が未設定の場合、ブラウザでWebChatを開くとControl UIから設定できます。
-{{< /callout >}}
-
-ウィザード完了後、以下のコマンドで認証を設定してください：
-
-```bash
-openclaw configure --section model
-```
-
-対話式でAPIキーまたはセッショントークンを設定できます。
-
-**または** ブラウザでWebChatを開き、右上の⚙️（設定）→ Control UI から設定することもできます。
-
-#### ⑧ セットアップ完了
-
-Gateway が自動起動し、ブラウザで WebChat にアクセスできるようになります🎉
+選択したプロバイダーに応じた最新の対応モデル一覧がOpenClawから自動取得されます。
 
 ```
-✅ OpenClaw Gateway が起動しました
-🌐 http://localhost:18789
+🤖 デフォルトモデルの選択
+
+
+  anthropic の対応モデル：
+  ─────────────────────────────────
+  1) anthropic/claude-sonnet-4-5
+  2) anthropic/claude-opus-4-6
+  3) anthropic/claude-haiku-4-5
+  ...
+
+  番号を入力するか、モデル名を直接入力してください
+選択:
 ```
 
-ブラウザでURLを開いて、すぐに使い始められます。
+→ 番号またはモデル名を入力。
+
+#### ⑧ Gateway の起動
+
+```
+🚀 OpenClaw Gateway を起動しますか？ (Y/n):
+```
+
+→ **Enter** または **`Y`** で起動。画面に表示されるURLをブラウザで開けば完了です🎉
 
 {{< /tab >}}
 
 {{< tab >}}
 
-#### ① Node.js の確認とインストール（自動）
+#### ① Node.js の確認（自動）
 
 ```
 🔍 Node.js を確認中...
 ✅ Node.js v22.x.x が見つかりました
 ```
 
-未インストールの場合は推奨バージョンが自動でインストールされます。そのまま待ってください。
+すでにインストール済みなら自動でスキップされます。未インストールの場合は自動でインストールが始まるので、そのまま待ってください。
 
 #### ② OpenClaw のインストール（自動）
 
@@ -222,57 +261,98 @@ Gateway が自動起動し、ブラウザで WebChat にアクセスできるよ
 ✅ OpenClaw 2026.x.x をインストールしました
 ```
 
-常に最新版がインストールされます。
+常に最新版がインストールされます。すでにインストール済みの場合は上書き確認が出ます：
 
-#### ③ セキュリティ警告の確認
+```
+⚠️  OpenClaw がすでにインストールされています
+   上書きインストールしますか？ (y/N):
+```
 
-セキュリティ注意事項が表示されます。内容を確認して「Yes」を選択してください。
+→ 最新版にしたい場合は **`y`**、そのままでよければ **Enter**
 
-![セキュリティ警告画面](/images/onboard/01-security.png)
+#### ③ 認証方法の選択
 
-#### ④ フロー選択
+```
+🔑 認証設定
+  1) サブスクリプション（認証トークン）
+  2) APIキー（従量課金）
+  3) ローカルモデル（Ollama等）
 
-**QuickStart**（デフォルト設定・推奨）または **Manual**（詳細設定）を選択します。
+利用方法を選択してください [1/2/3]:
+```
 
-![QuickStart/Manual選択画面](/images/onboard/02-mode.png)
+| 選択 | こんな人向け |
+|------|------------|
+| **1** | ChatGPT Plus/ProやClaude Pro/Maxを契約中 → 追加料金なし |
+| **2** | サブスクなし、または大量に使いたい → 従量課金 |
+| **3** | GPU搭載PCがある → 完全無料・オフライン |
+
+#### ④ プロバイダーの選択（③で 1 or 2 を選んだ場合）
+
+サブスクリプションの場合：
+```
+どのサービスのサブスクリプションをお持ちですか？
+  1) Anthropic（Claude Pro / Max）
+  2) OpenAI（ChatGPT Plus / Pro）
+  3) Google（Gemini Advanced）
+```
+
+→ 自分が契約しているサービスの番号を入力。トークンの取得手順とURLが画面に表示されます。
+
+APIキーの場合：
+```
+どのプロバイダーを利用しますか？
+  1) Anthropic（推奨）
+  2) OpenAI
+  3) Google
+  4) Groq
+  5) OpenRouter
+```
+
+→ 利用したいプロバイダーの番号を入力。取得手順とURLが画面に表示されます。
+
+#### ⑤ トークン / APIキーの入力
+
+④で選択したプロバイダーの取得手順が画面に表示されます。
+
+```
+認証トークンを貼り付けてください:
+```
+
+→ 画面の手順に従ってトークンまたはAPIキーを取得し、貼り付けてください。入力するまで先に進めません。
 
 {{< callout type="info" >}}
-**初めての方はQuickStartがおすすめです。** 必要な設定がデフォルト値で自動的に適用され、すぐに使い始められます。
+ローカルモデル（③で3を選択）の場合、この手順はスキップされます。
 {{< /callout >}}
 
-#### ⑤ チャネル選択
+#### ⑥ デフォルトモデルの選択
 
-メッセージングアプリ（Telegram、Discord、WhatsApp等）との連携を設定できます。  
-後から設定することもできるので、**「Skip for now」** を選んでも問題ありません。
-
-![チャネル選択画面](/images/onboard/08-channel-select.png)
-
-#### ⑥ 認証設定（セットアップ完了後に実施）
-
-{{< callout type="info" >}}
-**QuickStartではデフォルトモデル（anthropic/claude-sonnet-4-5）が自動設定されます。** 認証が未設定の場合、ブラウザでWebChatを開くとControl UIから設定できます。
-{{< /callout >}}
-
-ウィザード完了後、以下のコマンドで認証を設定してください：
-
-```bash
-openclaw configure --section model
-```
-
-対話式でAPIキーまたはセッショントークンを設定できます。
-
-**または** ブラウザでWebChatを開き、右上の⚙️（設定）→ Control UI から設定することもできます。
-
-#### ⑦ セットアップ完了
-
-Gateway が自動起動し、ブラウザで WebChat にアクセスできるようになります🎉
+選択したプロバイダーに応じた最新の対応モデル一覧がOpenClawから自動取得されます。
 
 ```
-✅ OpenClaw Gateway が起動しました
-🌐 http://localhost:18789
+🤖 デフォルトモデルの選択
+
+
+  anthropic の対応モデル：
+  ─────────────────────────────────
+  1) anthropic/claude-sonnet-4-5
+  2) anthropic/claude-opus-4-6
+  3) anthropic/claude-haiku-4-5
+  ...
+
+  番号を入力するか、モデル名を直接入力してください
+選択:
 ```
 
-ブラウザでURLを開いて、すぐに使い始められます。
+→ 番号またはモデル名を入力。
+
+#### ⑦ Gateway の起動
+
+```
+🚀 OpenClaw Gateway を起動しますか？ (Y/n):
+```
+
+→ **Enter** または **`Y`** で起動。画面に表示されるURLをブラウザで開けば完了です🎉
 
 {{< /tab >}}
 
@@ -285,10 +365,10 @@ Gateway が自動起動し、ブラウザで WebChat にアクセスできるよ
 セットアップお疲れさまでした！次は以下の順番で進めましょう：
 
 {{< cards >}}
-  {{< card link="./security" title="🔒 セキュリティ初期設定" subtitle="まず最初にセキュリティを確認" >}}
-  {{< card link="../usage/basics" title="💬 基本的な使い方" subtitle="WebChatでの対話を始める" >}}
-  {{< card link="./webchat-ja" title="🇯🇵 WebChat日本語化" subtitle="UIを日本語化する" >}}
-  {{< card link="./webchat-settings" title="⚙️ WebChat設定" subtitle="詳細なカスタマイズ" >}}
+  {{< card link="/wiki-notes/setup/security" title="🔒 セキュリティ初期設定" subtitle="まず最初にセキュリティを確認" >}}
+  {{< card link="/wiki-notes/usage/basics" title="💬 基本的な使い方" subtitle="WebChatでの対話を始める" >}}
+  {{< card link="/wiki-notes/webchat-ja" title="🇯🇵 WebChat日本語化" subtitle="UIを日本語化する" >}}
+  {{< card link="/wiki-notes/setup/webchat-settings" title="⚙️ WebChat設定" subtitle="詳細なカスタマイズ" >}}
 {{< /cards >}}
 
 ---
