@@ -12,6 +12,14 @@ table {
   width: 100% !important;
 }
 
+/* 検索バー枠線 */
+.hextra-search-input {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+:root.dark .hextra-search-input {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
 /* ナビバー投稿ボタン */
 nav a[href*="article-submission"] {
   background: transparent !important;
