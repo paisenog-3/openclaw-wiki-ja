@@ -7,7 +7,7 @@ toc: true
 type: docs
 ---
 
-# 貢献ガイドと利用規約
+
 
 OpenClaw 日本語活用Wikiへようこそ！
 
@@ -137,24 +137,24 @@ OpenClaw 日本語活用Wikiは、すべての参加者にとって安全で建�
 ### ステップ2: ローカルにクローン
 
 ```bash
-# Forkしたリポジトリをクローン
+
 git clone https://github.com/yozora4416/openclaw-wiki-ja.git
 cd openclaw-wiki-ja
 
-# テーマのsubmoduleを取得
+
 git submodule update --init --recursive
 ```
 
 ### ステップ3: ブランチを作成
 
 ```bash
-# 作業用ブランチを作成
+
 git checkout -b add/article-name
 
-# ブランチ名の例:
-# - add/new-feature-guide (新規記事追加)
-# - fix/typo-in-setup (誤字修正)
-# - improve/webchat-settings (記事改善)
+
+
+
+
 ```
 
 ### ステップ4: 記事を作成・編集
@@ -164,10 +164,10 @@ git checkout -b add/article-name
 Hugoコマンドで記事のテンプレートを生成：
 
 ```bash
-# 例: セットアップカテゴリに新規記事を追加
+
 hugo new content/setup/new-article.md
 
-# 例: Wikiノートカテゴリに新規記事を追加
+
 hugo new content/wiki-notes/new-tip.md
 ```
 
@@ -178,7 +178,7 @@ hugo new content/wiki-notes/new-tip.md
 `content/` ディレクトリ内の対象ファイルを直接編集します。
 
 ```bash
-# 例
+
 vim content/setup/getting-started.md
 ```
 
@@ -187,11 +187,11 @@ vim content/setup/getting-started.md
 記事を書いたら、ローカルでプレビューして確認します。
 
 ```bash
-# Hugoサーバーを起動
+
 hugo server -D
 
-# ブラウザで確認
-# http://localhost:1313
+
+
 ```
 
 - `-D` オプション: 下書き（draft: true）の記事も表示
@@ -201,10 +201,10 @@ hugo server -D
 変更をコミットします。
 
 ```bash
-# 変更をステージング
+
 git add content/setup/new-article.md
 
-# コミット
+
 git commit -m "Add: 新しいセットアップガイド記事を追加"
 ```
 
@@ -220,7 +220,7 @@ Improve: 内容の改善
 ### ステップ7: Pushとプルリクエスト
 
 ```bash
-# Forkしたリポジトリにプッシュ
+
 git push origin add/article-name
 ```
 
@@ -287,7 +287,7 @@ draft: false   # 公開状態（true=下書き）
 #### 見出し
 
 ```markdown
-# ページタイトル（Front Matterのtitleと同じ）
+
 
 ## 大見出し
 
@@ -306,12 +306,12 @@ draft: false   # 公開状態（true=下書き）
 
 ````markdown
 ```bash
-# Bashコマンド例
+
 openclaw gateway start
 ```
 
 ```python
-# Pythonコード例
+
 def hello():
     print("Hello, OpenClaw!")
 ```
@@ -384,10 +384,10 @@ Hextraのcalloutを使用：
 
 ```markdown
 ---
-# Front Matter
+
 ---
 
-# タイトル
+
 
 ## 概要
 この記事の要約（3-5行）
@@ -470,7 +470,7 @@ Hextraのcalloutを使用：
 **A:** 同じブランチで修正をコミット・プッシュすれば、PRが自動更新されます。
 
 ```bash
-# 修正後
+
 git add .
 git commit -m "Fix: レビュー指摘に対応"
 git push origin add/article-name

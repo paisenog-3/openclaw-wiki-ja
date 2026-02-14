@@ -4,7 +4,7 @@ weight: 15
 description: "ClawdbotからOpenClawへの移行手順、設定の変更点、トラブルシューティング方法を解説します。"
 ---
 
-# Clawdbotからの移行
+
 
 ClawdbotはOpenClawにリブランドされました。このガイドでは、既存のClawdbot環境からOpenClawへの移行手順、設定の変更点、よくあるトラブルとその対処法を解説します。
 
@@ -39,10 +39,10 @@ ClawdbotはOpenClawにリブランドされました。このガイドでは、�
 移行前に設定ファイルとカスタムスクリプトをバックアップします：
 
 ```bash
-# 設定ディレクトリ全体をバックアップ
+
 cp -r ~/.clawdbot/ ~/.clawdbot.bak/
 
-# カスタムスクリプトの確認
+
 ls ~/.clawdbot/scripts/
 ls ~/.clawdbot/telegram-error-handler.js
 ```
@@ -90,17 +90,17 @@ OpenClawは複数のプロファイルをサポートしており、設定を切
 
 **プロファイルの使い分け**:
 ```bash
-# デフォルトプロファイル
+
 openclaw gateway
 
-# 別プロファイルを指定
+
 openclaw --profile work gateway
 openclaw --profile dev gateway
 ```
 
 **state ディレクトリの変更**:
 ```bash
-# 環境変数でstate ディレクトリを変更
+
 export OPENCLAW_STATE_DIR=/custom/path/to/state
 openclaw gateway
 ```
@@ -114,11 +114,11 @@ openclaw gateway
 ### Step 1: パッケージの更新
 
 ```bash
-# WSL2またはLinux環境で実行
+
 npm install -g openclaw@latest
 
-# 旧パッケージの削除（オプション）
-# npm uninstall -g clawdbot
+
+
 ```
 
 ### Step 2: 設定の移行と修復
@@ -126,7 +126,7 @@ npm install -g openclaw@latest
 OpenClawは初回起動時に旧設定の一部を自動移行しますが、一部のフィールドは手動修正が必要な場合があります。
 
 ```bash
-# 設定の自動修復
+
 openclaw doctor --fix
 ```
 
@@ -145,20 +145,20 @@ openclaw doctor --fix
 OpenClaw 2026.2.x ではデバイス認証が厳格化されました。初回アクセス時にペアリング承認が必要です。
 
 ```bash
-# 保留中のデバイス一覧を確認
+
 openclaw devices list
 
-# Pending 状態のデバイスを承認
+
 openclaw devices approve <request-id>
 ```
 
 ### Step 4: 動作確認
 
 ```bash
-# ヘルスチェック
+
 openclaw doctor
 
-# Gateway 起動
+
 openclaw gateway --port 18789
 ```
 
@@ -184,20 +184,20 @@ Invalid config at /root/.openclaw/openclaw.json:
 {{< callout type="warning" >}}
 systemdやsupervisor等の自動再起動サービスを使用している場合は、まずサービスを停止してから修復作業を行ってください：
 ```bash
-# systemdの例
+
 sudo systemctl stop openclaw-gateway
 
-# supervisorの例
+
 sudo supervisorctl stop openclaw-gateway
 ```
 {{< /callout >}}
 
 ```bash
-# 自動修復（推奨）
+
 openclaw doctor --fix
 
-# 手動修正が必要な場合
-# 設定ファイルを確認
+
+
 cat ~/.openclaw/openclaw.json | jq '.gateway.auth'
 ```
 
@@ -215,10 +215,10 @@ cat ~/.openclaw/openclaw.json | jq '.gateway.auth'
 
 **1. ペアリング承認（最も多いパターン）**:
 ```bash
-# 保留中のデバイスを確認
+
 openclaw devices list
 
-# 承認
+
 openclaw devices approve <request-id>
 ```
 
@@ -228,7 +228,7 @@ openclaw devices approve <request-id>
 
 **3. トークンの確認**:
 ```bash
-# 設定ファイルのトークンを確認
+
 jq -r '.gateway.auth.token' ~/.openclaw/openclaw.json
 ```
 
@@ -237,8 +237,8 @@ jq -r '.gateway.auth.token' ~/.openclaw/openclaw.json
 旧Clawdbot時代のブラウザキャッシュが干渉している可能性があります：
 
 ```bash
-# ブラウザのキャッシュとローカルストレージをクリア
-# または専用のChromeプロファイルを使用（推奨）
+
+
 google-chrome --user-data-dir=/tmp/openclaw-chrome
 ```
 
@@ -246,7 +246,7 @@ google-chrome --user-data-dir=/tmp/openclaw-chrome
 
 **5. 強制リセット（最終手段）**:
 ```bash
-# デバイス情報のバックアップと削除
+
 cp -r ~/.openclaw/devices/ ~/.openclaw/devices.bak/
 rm ~/.openclaw/devices/pending.json
 ```
@@ -317,7 +317,7 @@ openclaw gateway
 
 ```bash
 #!/bin/bash
-# session-guard.sh — 巨大メッセージを含むセッションを検出・アーカイブ
+
 
 SESSIONS_DIR="${HOME}/.openclaw/agents/main/sessions"
 MAX_LINE_BYTES=204800  # 200KB
@@ -369,7 +369,7 @@ openclaw gateway
 
 ```bash
 #!/bin/bash
-# patch-opus46.sh — claude-opus-4-6 をモデル一覧に追加
+
 
 MODELS_FILE=$(find ~/.nvm/versions/node/ -path '*/openclaw/dist/*models.generated.js' 2>/dev/null | head -1)
 
@@ -384,8 +384,8 @@ if grep -q 'claude-opus-4-6' "$MODELS_FILE"; then
 fi
 
 echo "[patch-opus46] Patching $MODELS_FILE..."
-# パッチ処理（モデル定義を追加）
-# ...
+
+
 echo "[patch-opus46] Done"
 ```
 
@@ -434,20 +434,20 @@ start "" "http://localhost:18789/"
 
 ```bash
 #!/bin/bash
-# start-openclaw.sh — OpenClaw Gateway 起動スクリプト
 
-# NVMの読み込み
+
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm use 22
 
-# Telegramエラーハンドラの読み込み
+
 export NODE_OPTIONS="--require $HOME/.openclaw/scripts/telegram-error-handler.js"
 
-# セッションガードの実行
+
 ~/.openclaw/scripts/session-guard.sh
 
-# Gateway起動
+
 openclaw gateway --port 18789
 ```
 

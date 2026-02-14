@@ -5,7 +5,7 @@ description: "OpenClawの基本的なインストールから起動までの手�
 tags: ["セットアップ", "インストール", "初心者向け"]
 ---
 
-# OpenClawセットアップガイド
+
 
 OpenClawの基本的なインストールから起動までの手順を解説します。
 
@@ -53,17 +53,17 @@ OpenClawはNode.js環境で動作します。まずNode.jsをインストール�
 nvmを使用する方法（推奨）：
 
 ```bash
-# nvmをインストール
+
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-# シェルを再起動
+
 source ~/.bashrc  # または ~/.zshrc
 
-# Node.js 22をインストール
+
 nvm install 22
 nvm use 22
 
-# バージョン確認
+
 node --version  # v22.x.x と表示されればOK
 ```
 
@@ -72,7 +72,7 @@ node --version  # v22.x.x と表示されればOK
 WSL2上でLinuxの手順と同じようにインストールできます。
 
 ```bash
-# WSL2でUbuntuを起動後、上記のLinux手順を実行
+
 ```
 
 ---
@@ -100,10 +100,10 @@ openclaw --version
 OpenClawを初めて起動する前に、APIキーを設定します。
 
 ```bash
-# 環境変数として設定
+
 export ANTHROPIC_API_KEY="your-api-key-here"
 
-# .bashrcに追加して永続化（推奨）
+
 echo 'export ANTHROPIC_API_KEY="your-api-key-here"' >> ~/.bashrc
 source ~/.bashrc
 ```

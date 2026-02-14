@@ -5,7 +5,7 @@ description: "OpenClaw WebChatダッシュボードUIを日本語化する方法
 tags: ["カスタマイズ", "日本語化", "WebChat"]
 ---
 
-# WebChat日本語化パッチ
+
 
 OpenClaw WebChatダッシュボードUIを日本語化するパッチの導入手順を解説します。
 
@@ -53,24 +53,24 @@ OpenClaw WebChatダッシュボードUIを日本語化するパッチの導入�
 パッチスクリプトをダウンロードして実行します。
 
 ```bash
-# パッチをダウンロード
+
 wget https://raw.githubusercontent.com/yozora4416/openclaw-webchat-ja/main/scripts/apply.sh
 
-# 実行権限を付与
+
 chmod +x apply.sh
 
-# パッチを適用
+
 ./apply.sh
 ```
 
 ### 方法2: リポジトリをクローン
 
 ```bash
-# リポジトリをクローン
+
 git clone https://github.com/yozora4416/openclaw-webchat-ja.git
 cd openclaw-webchat-ja
 
-# パッチを適用
+
 ./scripts/apply.sh
 ```
 
@@ -79,13 +79,13 @@ cd openclaw-webchat-ja
 OpenClawのskillsディレクトリに配置する方法です。
 
 ```bash
-# OpenClaw skillsディレクトリにクローン
+
 git clone https://github.com/yozora4416/openclaw-webchat-ja.git \
   /root/clawd/skills/webchat-ja
 
 cd /root/clawd/skills/webchat-ja
 
-# パッチを適用
+
 ./scripts/apply.sh
 ```
 
@@ -173,14 +173,14 @@ openclaw gateway restart
 OpenClawを更新すると、パッチが上書きされるため、再適用が必要です。
 
 ```bash
-# OpenClawを更新
+
 npm update -g openclaw
 
-# パッチを再適用
+
 cd /path/to/openclaw-webchat-ja
 ./scripts/apply.sh
 
-# Gatewayを再起動
+
 openclaw gateway restart
 ```
 
