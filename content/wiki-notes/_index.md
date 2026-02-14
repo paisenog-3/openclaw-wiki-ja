@@ -22,12 +22,8 @@ OpenClawの活用ノート、Tips、トラブルシューティングをまと�
 
 ## 🚀 初期設定
 
-- [OpenClawセットアップガイド](setup/getting-started) — インストールから起動まで
-- [セキュリティ初期設定](setup/security) — まず最初にセキュリティを確認
-- [ワークスペース設定ガイド](setup/workspace) — ワークスペースのカスタマイズ
-- [WebChat設定](setup/webchat-settings) — WebChat UIのカスタマイズ
-- [Clawdbotからの移行](setup/migration-from-clawdbot) — 旧Clawdbotからの移行手順
+{{< section-list path="wiki-notes/setup" >}}
 
 ## 🔧 カスタマイズ
 
-- [🇯🇵 WebChat日本語化パッチ](webchat-ja) — WebChatインターフェースを日本語化する方法
+{{< section-list path="wiki-notes/customize" >}}
