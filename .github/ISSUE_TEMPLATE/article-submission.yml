@@ -1,18 +1,17 @@
-name: "📝 記事を投稿する"
-description: "Wikiに新しい記事を投稿します"
-title: "[記事投稿] "
+name: "📝 ノートを投稿する"
+description: "Wikiにノートを投稿します"
+title: "[ノート投稿] "
 labels: ["article-submission"]
 body:
   - type: markdown
     attributes:
       value: |
-        ## 記事の投稿ありがとうございます！🌸
         以下のフォームに記入してください。投稿後、自動でWikiに掲載されます。
 
   - type: input
     id: title
     attributes:
-      label: 記事タイトル
+      label: ノートタイトル
       placeholder: "例: Cronジョブの設定方法"
     validations:
       required: true
@@ -34,8 +33,7 @@ body:
   - type: input
     id: author_name
     attributes:
-      label: 投稿者名（任意）
-      description: "空欄の場合は「匿名」と表示されます"
+      label: "投稿者名（任意 — 空欄の場合は「匿名」と表示されます）"
       placeholder: "例: たろう"
     validations:
       required: false
@@ -43,8 +41,7 @@ body:
   - type: input
     id: author_link
     attributes:
-      label: SNS / Webサイト（任意）
-      description: "X、GitHub、ブログなどのURL。記事に投稿者リンクとして表示されます"
+      label: "SNS / Webサイト（任意 — ノートに投稿者リンクとして表示されます）"
       placeholder: "例: https://x.com/your_account"
     validations:
       required: false
@@ -52,7 +49,7 @@ body:
   - type: textarea
     id: content
     attributes:
-      label: 記事の内容
+      label: ノートの内容
       description: "Markdown形式で書けます。見出し（##）や箇条書き（-）も使えます。"
       placeholder: |
         ## 概要
@@ -68,7 +65,6 @@ body:
     id: notes
     attributes:
       label: 補足・メモ（任意）
-      description: "参考URLや補足事項があればここに"
       placeholder: "参考: https://docs.openclaw.ai/..."
     validations:
       required: false
