@@ -48,7 +48,7 @@ type: docs
   <a href="https://github.com/paisenog-3/openclaw-wiki-ja/issues/new?template=article-submission.yml" target="_blank" style="display: inline-block; padding: 12px 32px; background: #2563eb; color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">📝 記事を投稿する</a>
 </div>
 
-GitHubアカウントがあれば、フォームから記事を投稿できます。
+フォームから記事を投稿できます（[GitHubアカウント](https://github.com/signup)が必要です）。
 
 ### 投稿者情報
 
