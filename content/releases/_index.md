@@ -1,11 +1,8 @@
 ---
 title: リリースノート
-weight: 5
 breadcrumbs: false
-sidebar:
-  open: true
 cascade:
-  type: docs
+  type: blog
 ---
 
 OpenClawの各バージョンのリリースノート日本語版です。公式CHANGELOGから、ユーザーに影響のある変更点をピックアップして解説しています。
