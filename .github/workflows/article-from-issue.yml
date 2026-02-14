@@ -1,16 +1,15 @@
-name: 記事投稿の自動PR作成
+name: 記事投稿の自動公開
 
 on:
   issues:
-    types: [labeled]
+    types: [opened]
 
 jobs:
-  create-article-pr:
+  publish-article:
     if: contains(github.event.issue.labels.*.name, 'article-submission')
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
       issues: write
 
     steps:
@@ -23,7 +22,6 @@ jobs:
           script: |
             const body = context.payload.issue.body;
             
-            // Parse form fields
             const getField = (label) => {
               const regex = new RegExp(`### ${label}\\s*\\n\\s*\\n([\\s\\S]*?)(?=\\n### |$)`);
               const match = body.match(regex);
@@ -35,7 +33,6 @@ jobs:
             const content = getField('記事の内容');
             const notes = getField('補足・メモ（任意）');
             
-            // Map category to directory
             const categoryMap = {
               'セットアップ（setup）': 'setup',
               'スキル・プラグイン（skills）': 'wiki-notes',
@@ -45,12 +42,9 @@ jobs:
               'その他': 'wiki-notes'
             };
             const dir = categoryMap[category] || 'wiki-notes';
-            
-            // Generate slug from issue number
             const slug = `community-${context.payload.issue.number}`;
             
             core.setOutput('title', title);
-            core.setOutput('category', category);
             core.setOutput('content', content);
             core.setOutput('notes', notes);
             core.setOutput('dir', dir);
@@ -64,50 +58,39 @@ jobs:
           FILE="${DIR}/${{ steps.parse.outputs.slug }}.md"
           mkdir -p "$DIR"
           
-          cat > "$FILE" << 'FRONTMATTER'
-          ---
-          title: "${{ steps.parse.outputs.title }}"
-          ---
-          FRONTMATTER
+          {
+            echo "---"
+            echo "title: \"$TITLE\""
+            echo "date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "author: $AUTHOR"
+            echo "source_issue: $ISSUE_NUM"
+            echo "---"
+            echo ""
+            echo "$CONTENT"
+          } > "$FILE"
           
-          # Fix indentation from heredoc
-          sed -i 's/^          //' "$FILE"
-          
-          # Append content
-          echo "" >> "$FILE"
-          echo "$CONTENT" >> "$FILE"
-          
-          # Add notes as comment if present
-          if [ -n "$NOTES" ]; then
+          if [ -n "$NOTES" ] && [ "$NOTES" != "_No response_" ]; then
             echo "" >> "$FILE"
             echo "---" >> "$FILE"
             echo "" >> "$FILE"
             echo "> 投稿者メモ: $NOTES" >> "$FILE"
           fi
         env:
+          TITLE: ${{ steps.parse.outputs.title }}
           CONTENT: ${{ steps.parse.outputs.content }}
           NOTES: ${{ steps.parse.outputs.notes }}
+          AUTHOR: ${{ steps.parse.outputs.author }}
+          ISSUE_NUM: ${{ steps.parse.outputs.issue_number }}
 
-      - name: Create PR
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: article/issue-${{ steps.parse.outputs.issue_number }}
-          title: "📝 記事投稿: ${{ steps.parse.outputs.title }}"
-          body: |
-            ## 投稿記事の自動PR
+      - name: Commit and push
+        run: |
+          git config user.name "wiki-bot"
+          git config user.email "wiki-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "docs: ${{ steps.parse.outputs.title }} (closes #${{ steps.parse.outputs.issue_number }})"
+          git push
 
-            - **投稿者**: @${{ steps.parse.outputs.author }}
-            - **カテゴリ**: ${{ steps.parse.outputs.category }}
-            - **元Issue**: #${{ steps.parse.outputs.issue_number }}
-
-            ---
-            内容を確認して、問題なければマージしてください。
-            マージ後、Issueは自動でクローズされます。
-          labels: article-submission
-          commit-message: "docs: ${{ steps.parse.outputs.title }} (#${{ steps.parse.outputs.issue_number }})"
-
-      - name: Comment on issue
+      - name: Close issue with comment
         uses: actions/github-script@v7
         with:
           script: |
@@ -115,5 +98,11 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.issue.number,
-              body: `🌸 記事のPRを自動作成しました！管理者がレビュー後、Wikiに掲載されます。\n\nありがとうございます！`
+              body: `🌸 記事を公開しました！\n\n👉 [Wikiで確認する](https://paisenog-3.github.io/openclaw-wiki-ja/${{ steps.parse.outputs.dir }}/${{ steps.parse.outputs.slug }}/)\n\nありがとうございます！`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed'
             });
