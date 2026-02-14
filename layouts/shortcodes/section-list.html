@@ -5,7 +5,7 @@
 {{ if $section }}
 <ul>
   {{ range $section.Pages.ByWeight }}
-  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — {{ .Description | default .Summary | truncate 60 }}</li>
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }} — {{ . }}{{ end }}</li>
   {{ end }}
 </ul>
 {{ else }}
