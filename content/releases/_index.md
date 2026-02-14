@@ -6,3 +6,11 @@ sidebar:
 cascade:
   type: docs
 ---
+
+OpenClawの最新リリース情報と変更履歴をまとめています。
+
+{{< cards >}}
+  {{< card link="2026-2-13" title="📋 v2026.2.13" subtitle="最新版リリースノート" >}}
+  {{< card link="2026-2-12" title="📋 v2026.2.12" subtitle="前バージョンリリースノート" >}}
+  {{< card link="about" title="ℹ️ リリースノートについて" subtitle="このセクションの概要と使い方" >}}
+{{< /cards >}}

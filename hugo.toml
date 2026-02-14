@@ -54,7 +54,8 @@ defaultContentLanguage = 'ja'
   # Page設定
   [params.page]
     # wide (90rem), normal (1280px)
-    width = "normal"
+    width = "wide"
+    fullWidth = true
 
   # Theme設定
   [params.theme]
