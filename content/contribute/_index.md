@@ -264,17 +264,17 @@ console.log("Hello!");
 Hugo Bookテーマのショートコードを使用：
 
 ```markdown
-{{< hint info >}}
+{{< callout type="info" >}}
 **情報**: ここに情報を書きます。
-{{< /hint >}}
+{{< /callout >}}
 
-{{< hint warning >}}
+{{< callout type="warning" >}}
 **警告**: 注意が必要な内容。
-{{< /hint >}}
+{{< /callout >}}
 
-{{< hint danger >}}
+{{< callout type="error" >}}
 **危険**: 重要な警告。
-{{< /hint >}}
+{{< /callout >}}
 ```
 
 ---
