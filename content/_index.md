@@ -11,13 +11,13 @@ type: docs
 </div>
 
 {{< cards cols="2" >}}
-  {{< card link="/wiki-notes" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
-  {{< card link="/releases" title="📋 リリースノート" subtitle="最新版の変更履歴と新機能" >}}
-  {{< card link="/setup/getting-started" title="🚀 インストールと初期設定" subtitle="OpenClawを始める最初のステップ" >}}
-  {{< card link="/setup/migration-from-clawdbot" title="🔄 Clawdbotからの移行" subtitle="既存のClawdbotユーザー向けガイド" >}}
-  {{< card link="/setup/webchat-settings" title="⚙️ WebChat設定リファレンス" subtitle="WebChat機能の詳細設定" >}}
-  {{< card link="/wiki-notes/webchat-ja" title="🇯🇵 WebChat日本語化パッチ" subtitle="WebChatインターフェースを日本語化" >}}
-  {{< card link="/contribute" title="📜 利用規約・貢献ガイド" subtitle="このWikiへの貢献方法とガイドライン" >}}
+  {{< card link="wiki-notes/webchat-ja" title="📖 Wikiノート" subtitle="日本語化パッチ、Tips、トラブルシューティング" >}}
+  {{< card link="releases/2026-2-13" title="📋 リリースノート" subtitle="最新版 v2026.2.13 の変更履歴と新機能" >}}
+  {{< card link="setup/getting-started" title="🚀 インストールと初期設定" subtitle="OpenClawを始める最初のステップ" >}}
+  {{< card link="setup/migration-from-clawdbot" title="🔄 Clawdbotからの移行" subtitle="既存のClawdbotユーザー向けガイド" >}}
+  {{< card link="setup/webchat-settings" title="⚙️ WebChat設定リファレンス" subtitle="WebChat機能の詳細設定" >}}
+  {{< card link="wiki-notes/webchat-ja" title="🇯🇵 WebChat日本語化パッチ" subtitle="WebChatインターフェースを日本語化" >}}
+  {{< card link="contribute" title="📜 利用規約・貢献ガイド" subtitle="このWikiへの貢献方法とガイドライン" >}}
 {{< /cards >}}
 
 ---
