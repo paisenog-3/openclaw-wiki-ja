@@ -4,7 +4,7 @@ toc: false
 ---
 
 <div class="hx:mt-8 hx:mb-8 hx:text-center">
-  <img src="/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
+  ![OpenClaw 日本語Wiki](images/hero.jpg)
 </div>
 
 <div class="hx:mt-8"></div>
