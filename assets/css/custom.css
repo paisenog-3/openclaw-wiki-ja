@@ -12,6 +12,17 @@ table {
   width: 100% !important;
 }
 
+/* マーカー（callout内の強調） */
+mark {
+  background: #dbeafe !important;
+  color: inherit !important;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+:root.dark mark {
+  background: #1e3a5f !important;
+}
+
 /* 検索バー枠線 */
 .hextra-search-input {
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
