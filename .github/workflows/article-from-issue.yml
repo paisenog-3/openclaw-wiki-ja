@@ -46,7 +46,6 @@ jobs:
             const dir = categoryMap[category] || 'wiki-notes';
             const slug = `community-${context.payload.issue.number}`;
             
-            // Determine display name
             const noResponse = '_No response_';
             const displayName = (authorName && authorName !== noResponse) 
               ? authorName 
@@ -70,16 +69,31 @@ jobs:
           mkdir -p "$DIR"
           
           DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          DATE_JP=$(TZ=Asia/Tokyo date +%Y年%m月%d日)
           
+          # Build contributor YAML
+          if [ -n "$AUTHOR_LINK" ]; then
+            CONTRIB_YAML="  - name: \"$DISPLAY_NAME\"
+    link: \"$AUTHOR_LINK\"
+    github: \"$GITHUB_USER\"
+    percentage: 100
+    date: $(date -u +%Y-%m-%d)"
+          else
+            CONTRIB_YAML="  - name: \"$DISPLAY_NAME\"
+    github: \"$GITHUB_USER\"
+    percentage: 100
+    date: $(date -u +%Y-%m-%d)"
+          fi
+          
+          # Build frontmatter + content
           {
             echo "---"
             echo "title: \"$TITLE\""
             echo "date: $DATE"
             echo "source_issue: $ISSUE_NUM"
             echo "community: true"
-            echo "author_name: \"$DISPLAY_NAME\""
-            echo "author_link: \"$AUTHOR_LINK\""
-            echo "github_user: \"$GITHUB_USER\""
+            echo "contributors:"
+            echo "$CONTRIB_YAML"
             echo "---"
             echo ""
             echo "$CONTENT"
@@ -98,9 +112,9 @@ jobs:
           echo "---" >> "$FILE"
           echo "" >> "$FILE"
           if [ -n "$AUTHOR_LINK" ]; then
-            echo "> 📝 この記事は [$DISPLAY_NAME]($AUTHOR_LINK) さんによるコミュニティ投稿です（$DATE_DISPLAY）" >> "$FILE"
+            echo "> 📝 [$DISPLAY_NAME]($AUTHOR_LINK) さんが投稿（${DATE_JP}）— 寄与 100%" >> "$FILE"
           else
-            echo "> 📝 この記事は $DISPLAY_NAME さんによるコミュニティ投稿です（$DATE_DISPLAY）" >> "$FILE"
+            echo "> 📝 $DISPLAY_NAME さんが投稿（${DATE_JP}）— 寄与 100%" >> "$FILE"
           fi
         env:
           TITLE: ${{ steps.parse.outputs.title }}
@@ -110,7 +124,6 @@ jobs:
           AUTHOR_LINK: ${{ steps.parse.outputs.author_link }}
           GITHUB_USER: ${{ steps.parse.outputs.github_user }}
           ISSUE_NUM: ${{ steps.parse.outputs.issue_number }}
-          DATE_DISPLAY: $(date +%Y年%m月%d日)
 
       - name: Commit and push
         run: |
