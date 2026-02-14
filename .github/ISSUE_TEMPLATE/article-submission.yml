@@ -50,7 +50,7 @@ body:
     id: content
     attributes:
       label: ノートの内容
-      description: "Markdown形式でも書けます。見出し（##）や箇条書き（-）も使えます。"
+      description: "Markdown形式でも書けます。見出し（##）や箇条書き（-）も使えます。⚠️ 添付ファイルは使用できません。ファイルを添付しても無視されます。テキストで記入してください。"
       placeholder: |
         ## 概要
         ここに概要を書く...
