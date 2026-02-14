@@ -266,7 +266,7 @@ openclaw config import /path/to/config.json
 
 ## 関連記事
 
-- [OpenClawセットアップガイド]({{< relref "/setup/getting-started" >}}) - 初期セットアップ
+- [OpenClawセットアップガイド]({{< relref "/wiki-notes/setup/getting-started" >}}) - 初期セットアップ
 - [WebChat日本語化パッチ]({{< relref "/wiki-notes/webchat-ja" >}}) - UIの日本語化
 
 ---

@@ -189,7 +189,7 @@ WebChatダッシュボードを日本語化するパッチを適用できます�
 
 デフォルトでは日本語フォントが適切に表示されますが、カスタムフォントを使いたい場合は、WebChatの設定から変更できます。
 
-詳しくは [WebChat設定ガイド]({{< relref "/setup/webchat-settings" >}}) をご覧ください。
+詳しくは [WebChat設定ガイド]({{< relref "/wiki-notes/setup/webchat-settings" >}}) をご覧ください。
 
 ---
 
@@ -259,7 +259,7 @@ openclaw gateway logs
 
 OpenClawのセットアップが完了しました！次は以下をお試しください：
 
-- [WebChat設定ガイド]({{< relref "/setup/webchat-settings" >}}) - WebChatの詳細設定
+- [WebChat設定ガイド]({{< relref "/wiki-notes/setup/webchat-settings" >}}) - WebChatの詳細設定
 - [WebChat日本語化パッチ]({{< relref "/wiki-notes/webchat-ja" >}}) - UIを日本語化
 - [OpenClaw公式ドキュメント](https://openclaw.io/docs) - 詳細な機能ガイド
 

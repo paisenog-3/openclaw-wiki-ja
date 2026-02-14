@@ -235,7 +235,7 @@ openclaw gateway restart
 ## 関連リンク
 
 - [openclaw-webchat-ja GitHubリポジトリ](https://github.com/yozora4416/openclaw-webchat-ja)
-- [WebChat設定ガイド]({{< relref "/setup/webchat-settings" >}})
+- [WebChat設定ガイド]({{< relref "/wiki-notes/setup/webchat-settings" >}})
 - [OpenClaw公式サイト](https://openclaw.io)
 
 ---
