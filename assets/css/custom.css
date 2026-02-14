@@ -9,7 +9,7 @@ th, td {
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 table {
-  width: auto !important;
+  width: 100% !important;
 }
 
 /* ナビバー投稿ボタン */
