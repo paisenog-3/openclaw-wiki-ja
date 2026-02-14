@@ -1,7 +1,13 @@
 ---
 title: OpenClaw 日本語Wiki
 toc: false
+_build:
+  render: always
+cascade:
+  type: default
 ---
+
+<style>.article-container h1:first-of-type, main > .content > h1:first-child, article h1:first-of-type { display: none; }</style>
 
 <div class="hx:mt-8 hx:mb-8 hx:text-center">
   <img src="https://yozora4416.github.io/openclaw-wiki-ja/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
