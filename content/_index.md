@@ -3,12 +3,8 @@ title: OpenClaw 日本語Wiki
 toc: false
 ---
 
-<div class="hx:mt-12 hx:mb-8 hx:text-center">
-
-{{< hextra/hero-subtitle >}}
-  OpenClawを日本語環境で使うための実践的なガイド集
-{{< /hextra/hero-subtitle >}}
-
+<div class="hx:mt-8 hx:mb-8 hx:text-center">
+  <img src="/images/hero.jpg" alt="OpenClaw 日本語Wiki" style="max-width: 600px; width: 100%; border-radius: 12px; margin: 0 auto;" />
 </div>
 
 <div class="hx:mt-8"></div>
