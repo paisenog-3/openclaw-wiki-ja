@@ -67,9 +67,8 @@ defaultContentLanguage = 'ja'
 
   # Theme設定
   [params.theme]
-    # light | dark | system
     default = "system"
-    displayToggle = true
+    displayToggle = false
 
   # 検索設定
   [params.search]
