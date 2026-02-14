@@ -2,6 +2,7 @@
 title: OpenClaw 日本語Wiki
 toc: false
 type: docs
+breadcrumbs: false
 ---
 
 <style>
