@@ -82,6 +82,19 @@ defaultContentLanguage = 'ja'
       # full | forward | reverse | strict
       tokenize = "forward"
 
+  # コメント・リアクション（Giscus）
+  [params.comments.giscus]
+    repo = "paisenog-3/openclaw-wiki-ja"
+    repoId = "R_kgDORQCNgg"
+    category = "General"
+    categoryId = "DIC_kwDORQCNgs4C2aRB"
+    mapping = "pathname"
+    strict = 0
+    reactionsEnabled = 1
+    emitMetadata = 0
+    inputPosition = "top"
+    lang = "ja"
+
   # 編集リンク設定
   [params.editURL]
     enable = true
