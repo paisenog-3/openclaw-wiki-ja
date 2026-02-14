@@ -21,7 +21,4 @@ OpenClawの各バージョンのリリースノート日本語版です。公式
 
 ---
 
-{{< cards >}}
-  {{< card link="2026-2-13" title="📋 v2026.2.13" subtitle="最新版リリースノート" >}}
-  {{< card link="2026-2-12" title="📋 v2026.2.12" subtitle="前バージョンリリースノート" >}}
-{{< /cards >}}
+{{< section-list path="releases" >}}
