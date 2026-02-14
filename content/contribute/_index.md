@@ -1,10 +1,11 @@
 ---
-title: "貢献ガイド・利用規約"
+title: "利用規約・ノート投稿について"
 weight: 30
-description: "投稿ルール、禁止事項、寄与ルール、ライセンス"
-tags: ["貢献", "コミュニティ", "利用規約"]
+description: "利用規約、禁止事項、ノート投稿の流れとルール"
+tags: ["利用規約", "投稿", "コミュニティ"]
 toc: true
 type: docs
+breadcrumbs: false
 ---
 
 ## 利用規約
@@ -42,30 +43,53 @@ type: docs
 
 ---
 
-## 記事を投稿する
+## ノート投稿について
+
+### 投稿の流れ
+
+1. **投稿ボタンを押す** — フォームが開きます（[GitHubアカウント](https://github.com/signup)が必要）
+2. **フォームに記入** — タイトル、カテゴリ、内容を入力して送信
+3. **自動で公開** — 数分後にWikiに記事が掲載されます
 
 <div style="margin: 1.5rem 0;">
-  <a href="https://github.com/paisenog-3/openclaw-wiki-ja/issues/new?template=article-submission.yml" target="_blank" style="display: inline-block; padding: 12px 32px; background: #2563eb; color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">📝 記事を投稿する</a>
+  <a href="https://github.com/paisenog-3/openclaw-wiki-ja/issues/new?template=article-submission.yml" target="_blank" style="display: inline-block; padding: 12px 32px; background: #2563eb; color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">📝 ノートを投稿する</a>
 </div>
 
-フォームから記事を投稿できます（[GitHubアカウント](https://github.com/signup)が必要です）。
+### 記事の書き方ルール
+
+| ルール | 説明 |
+|--------|------|
+| **Markdown形式** | 見出し（`##`）、箇条書き（`-`）、コードブロック（` ``` `）が使えます |
+| **日本語で記述** | IT用語は英語のままでOK（例: Gateway、Webhook、Config） |
+| **動作確認済みの内容を書く** | 未検証の手順は「未検証」と明記してください |
+| **出典を明記** | 公式ドキュメントや他サイトを参考にした場合はリンクを記載 |
+| **1記事1テーマ** | 複数のトピックは分けて投稿してください |
 
 ### 投稿者情報
 
 | フィールド | 必須 | 説明 |
 |-----------|------|------|
-| 投稿者名 | 任意 | 空欄なら「匿名」と表示 |
-| SNS / Webサイト | 任意 | 記事にリンク付きで表示 |
+| 投稿者名 | 任意 | 空欄なら「匿名」と表示されます |
+| SNS / Webサイト | 任意 | 記事にリンク付きで表示されます（自分のXやブログなど） |
+
+記事フッターに「誰が・いつ投稿したか」が自動表示されます。
 
 ### 寄与ルール
+
+投稿者には **寄与割合（%）** が付きます。
 
 | 状況 | 処理 |
 |------|------|
 | 単独投稿 | 投稿者の寄与 **100%** |
-| 類似記事のマージ | 内容量に基づいて按分（合計100%） |
+| 類似記事のマージ | 元記事の内容量に基づいて按分（合計100%） |
 | 同一内容の重複 | 先に投稿した人を原著者として優先 |
 
-記事フッターに投稿者名・日付・寄与割合が表示されます。
+### 投稿後の流れ
+
+- **公開**: 投稿後、数分で自動的にWikiに掲載されます
+- **品質チェック**: 定期的にセキュリティ・内容チェックが行われます
+- **類似記事の統合**: 同じテーマの記事が複数ある場合、内容を統合することがあります（寄与割合は按分）
+- **削除**: 利用規約に違反する投稿は予告なく削除されます
 
 ---
 
