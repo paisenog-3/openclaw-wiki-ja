@@ -1,10 +1,15 @@
 /* テーブル枠線 */
-table, th, td {
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+table {
   border-collapse: collapse;
 }
-:root.dark table, :root.dark th, :root.dark td {
+th, td {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+:root.dark th, :root.dark td {
   border-color: rgba(255, 255, 255, 0.2) !important;
+}
+table {
+  width: auto !important;
 }
 
 /* ナビバー投稿ボタン */
