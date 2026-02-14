@@ -47,6 +47,7 @@ defaultContentLanguage = 'ja'
 # Hextra パラメーター
 [params]
   description = 'OpenClawの日本語Wiki - コミュニティで育てる実践ガイド'
+  images = ['images/hero.jpg']
 
   # Navbar設定
   [params.navbar]
