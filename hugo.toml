@@ -1,4 +1,4 @@
-baseURL = 'https://yozora4416.github.io/openclaw-wiki-ja/'
+baseURL = 'https://paisenog-3.github.io/openclaw-wiki-ja/'
 languageCode = 'ja-JP'
 title = 'OpenClaw 日本語Wiki'
 copyright = 'Maintained by <a href="https://x.com/OG3_gata" target="_blank">パイセン｜AIと暮らす</a>'
@@ -21,7 +21,7 @@ defaultContentLanguage = 'ja'
 [menu]
   [[menu.main]]
     name = "GitHub"
-    url = "https://github.com/yozora4416/openclaw-wiki-ja"
+    url = "https://github.com/paisenog-3/openclaw-wiki-ja"
     weight = 2
     [menu.main.params]
       icon = "github"
@@ -76,7 +76,7 @@ defaultContentLanguage = 'ja'
   # 編集リンク設定
   [params.editURL]
     enable = true
-    base = "https://github.com/yozora4416/openclaw-wiki-ja/edit/main"
+    base = "https://github.com/paisenog-3/openclaw-wiki-ja/edit/main"
 
   # フッター設定
   [params.footer]
