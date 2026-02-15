@@ -8,7 +8,7 @@
 
 OpenClawを日本語環境で快適に使うための実践的な情報を共有するコミュニティ主導のWikiです。
 
-🌐 **サイト**: https://yozora4416.github.io/openclaw-wiki-ja/
+🌐 **サイト**: https://paisenog-3.github.io/openclaw-wiki-ja/
 
 ---
 
@@ -31,7 +31,7 @@ OpenClawを日本語環境で快適に使うための実践的な情報を共有
 
 ### Wikiを閲覧
 
-[https://yozora4416.github.io/openclaw-wiki-ja/](https://yozora4416.github.io/openclaw-wiki-ja/)
+[https://paisenog-3.github.io/openclaw-wiki-ja/](https://paisenog-3.github.io/openclaw-wiki-ja/)
 
 ### ローカルでWikiを起動
 
@@ -228,7 +228,7 @@ Hugoビルド
   ↓
 GitHub Pagesにデプロイ
   ↓
-https://yozora4416.github.io/openclaw-wiki-ja/ 更新
+https://paisenog-3.github.io/openclaw-wiki-ja/ 更新
 ```
 
 ---
