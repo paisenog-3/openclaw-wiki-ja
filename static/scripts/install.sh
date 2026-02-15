@@ -566,8 +566,6 @@ select_model() {
   echo "OpenClawで使用するデフォルトモデルを選択してください："
   echo ""
 
-  # OpenClawから対応モデルを動的取得
-  echo "利用可能なモデルを取得中..."
   echo ""
 
   case "$SELECTED_PROVIDER" in
@@ -583,11 +581,40 @@ select_model() {
       fi
       ;;
     *)
-      # プロバイダー名でフィルタしてモデル一覧を取得
-      MODELS=$(openclaw models --all 2>/dev/null | grep "^${SELECTED_PROVIDER}/" | awk '{print $1}' | head -20)
+      # プロバイダー別のビルトインモデルリスト
+      case "$SELECTED_PROVIDER" in
+        anthropic)
+          MODELS="anthropic/claude-sonnet-4-5
+anthropic/claude-opus-4-6
+anthropic/claude-haiku-4-5
+anthropic/claude-opus-4-5"
+          ;;
+        openai)
+          MODELS="openai/gpt-5.2
+openai/gpt-5-mini
+openai/gpt-5.1-codex
+openai/gpt-oss-120b"
+          ;;
+        google)
+          MODELS="google/gemini-3-pro-preview
+google/gemini-3-flash-preview"
+          ;;
+        groq)
+          MODELS="groq/llama-4-scout-17b
+groq/llama-4-maverick-17b"
+          ;;
+        openrouter)
+          MODELS="openrouter/anthropic/claude-sonnet-4-5
+openrouter/openai/gpt-5.2
+openrouter/google/gemini-3-pro-preview"
+          ;;
+        *)
+          MODELS=""
+          ;;
+      esac
 
       if [ -z "$MODELS" ]; then
-        echo "⚠️  モデル一覧を取得できませんでした"
+        echo "⚠️  モデル一覧がありません"
         read -rp "モデル名を手動入力してください: " MODEL < /dev/tty
         if [ -z "$MODEL" ]; then
           MODEL="$(default_model_for_provider "$SELECTED_PROVIDER")"

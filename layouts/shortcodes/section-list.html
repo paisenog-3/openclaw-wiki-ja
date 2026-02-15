@@ -1,0 +1,13 @@
+{{/* section-list: 指定セクションの子ページを自動リスト表示 */}}
+{{/* 使い方: {{< section-list path="wiki-notes/setup" >}} */}}
+{{ $path := .Get "path" }}
+{{ $section := .Site.GetPage $path }}
+{{ if $section }}
+<ul>
+  {{ range $section.Pages.ByWeight }}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }} — {{ . }}{{ end }}</li>
+  {{ end }}
+</ul>
+{{ else }}
+<p>セクションが見つかりません: {{ $path }}</p>
+{{ end }}
