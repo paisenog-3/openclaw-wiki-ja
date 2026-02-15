@@ -31,7 +31,7 @@ breadcrumbs: false
 </div>
 
 {{< cards cols="2" >}}
-  {{< card link="releases" title="📋 リリースノート" subtitle="最新: v2026.2.13（2026年2月13日）" >}}
+  {{< card link="releases" title="📋 リリースノート" subtitle="最新: v2026.2.14（2026年2月14日）" >}}
   {{< card link="contribute" title="📜 利用規約・ノート投稿について" subtitle="禁止事項、投稿ルール、寄与割合" >}}
 {{< /cards >}}
 
